@@ -13,7 +13,7 @@
 		<!-- My CSS -->
 
 		<link rel="stylesheet" type="text/css" href="./view/css/nf1.css">
-
+		<script src="./view/js/script.js"></script>
 	</head>
 	<body>
 
