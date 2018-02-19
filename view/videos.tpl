@@ -64,8 +64,26 @@
 				</div>
 			</section>
 
-			<div class="container">
-				<iframe width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			<div class="album text-muted">
+				<div class="container-flexbox">
+						<?php
+							if($table_videos != null)
+							{
+								foreach($table_videos as $video)
+								{?>
+									<div class="element">
+											<h1 class="title-page-menu"> <?php echo($video['title']);?></h1>
+											<iframe width="560" height="315" src="<?php echo($video['link']);?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+									</div>
+								<?php
+								}
+							}
+							else
+							{
+								?> <div class="element"><h1 class="title-page-menu">No Videos</h1></div> <?php
+							}
+						?>
+				</div>
 			</div>
 
 		</main>
