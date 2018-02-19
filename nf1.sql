@@ -459,8 +459,13 @@ INSERT INTO `team` (`idTeam`, `nameTeam`, `idDiscipline`) VALUES
 CREATE TABLE `videos` (
   `idVideos` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `link` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `link` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--
+-- Contenu de la table `videos`
+--
+INSERT INTO `videos` (`idVideos`, `title`, `link`) VALUES
+(1, 'NF1 Podcast #1', 'https://www.youtube.com/embed/K7NsMzfDsGA');
 
 --
 -- Index pour les tables exportées
@@ -566,7 +571,7 @@ ALTER TABLE `season`
 -- AUTO_INCREMENT pour la table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `idVideos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `idVideos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Contraintes pour les tables exportées
 --

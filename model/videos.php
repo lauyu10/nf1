@@ -3,7 +3,7 @@ function get_videos_db()
 {
   require('./model/connect_db.php');
   unset($line);
-  $sql = "select v.idVideos, v.title from videos v order by v.idVideos DESC";
+  $sql = "select v.idVideos, v.title, v.link from videos v order by v.idVideos DESC";
   $result = mysqli_query($link,$sql) or die (utf8_encode("request error") . $sql);
 
   $videos= array();
