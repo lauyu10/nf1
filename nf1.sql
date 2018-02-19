@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 08, 2018 at 07:07 PM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Client :  localhost
+-- Généré le :  Lun 19 Février 2018 à 10:15
+-- Version du serveur :  5.7.11
+-- Version de PHP :  5.6.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,29 +17,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nf1`
+-- Base de données :  `nf1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `articles`
+-- Structure de la table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `idArticle` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `idArticle` int(11) NOT NULL,
   `nameFile` varchar(255) NOT NULL,
   `nameImage` varchar(255) NOT NULL,
   `updateDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `idCategory` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idArticle`),
-  KEY `Fk_Article_Category` (`idCategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `title` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `articles`
+-- Contenu de la table `articles`
 --
 
 INSERT INTO `articles` (`idArticle`, `nameFile`, `nameImage`, `updateDate`, `idCategory`, `title`) VALUES
@@ -52,18 +47,16 @@ INSERT INTO `articles` (`idArticle`, `nameFile`, `nameImage`, `updateDate`, `idC
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Structure de la table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `idCategory` int(11) NOT NULL AUTO_INCREMENT,
-  `nameCategory` varchar(255) NOT NULL,
-  PRIMARY KEY (`idCategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `category` (
+  `idCategory` int(11) NOT NULL,
+  `nameCategory` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category`
+-- Contenu de la table `category`
 --
 
 INSERT INTO `category` (`idCategory`, `nameCategory`) VALUES
@@ -74,23 +67,19 @@ INSERT INTO `category` (`idCategory`, `nameCategory`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `circuit`
+-- Structure de la table `circuit`
 --
 
-DROP TABLE IF EXISTS `circuit`;
-CREATE TABLE IF NOT EXISTS `circuit` (
-  `idCircuit` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `circuit` (
+  `idCircuit` int(11) NOT NULL,
   `nameCircuit` varchar(255) NOT NULL,
   `place` varchar(255) NOT NULL,
   `idDiscipline` int(11) NOT NULL,
-  `idSeason` int(11) NOT NULL,
-  PRIMARY KEY (`idCircuit`,`idSeason`),
-  KEY `Fk_Circuit_Discipline` (`idDiscipline`),
-  KEY `Fk_Circuit_Season` (`idSeason`)
-) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8;
+  `idSeason` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `circuit`
+-- Contenu de la table `circuit`
 --
 
 INSERT INTO `circuit` (`idCircuit`, `nameCircuit`, `place`, `idDiscipline`, `idSeason`) VALUES
@@ -154,18 +143,16 @@ INSERT INTO `circuit` (`idCircuit`, `nameCircuit`, `place`, `idDiscipline`, `idS
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discipline`
+-- Structure de la table `discipline`
 --
 
-DROP TABLE IF EXISTS `discipline`;
-CREATE TABLE IF NOT EXISTS `discipline` (
+CREATE TABLE `discipline` (
   `idDiscipline` int(11) NOT NULL,
-  `nameDiscipline` varchar(255) NOT NULL,
-  PRIMARY KEY (`idDiscipline`)
+  `nameDiscipline` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `discipline`
+-- Contenu de la table `discipline`
 --
 
 INSERT INTO `discipline` (`idDiscipline`, `nameDiscipline`) VALUES
@@ -175,26 +162,22 @@ INSERT INTO `discipline` (`idDiscipline`, `nameDiscipline`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pilot`
+-- Structure de la table `pilot`
 --
 
-DROP TABLE IF EXISTS `pilot`;
-CREATE TABLE IF NOT EXISTS `pilot` (
-  `idPilot` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pilot` (
+  `idPilot` int(11) NOT NULL,
   `namePilot` varchar(255) NOT NULL,
   `idTeam` int(11) DEFAULT NULL,
   `idDiscipline` int(11) NOT NULL,
   `pilotNumber` int(11) DEFAULT NULL,
   `placeBirth` varchar(255) DEFAULT NULL,
   `dateBirth` date DEFAULT NULL,
-  `country` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idPilot`),
-  KEY `Fk_Pilot_Team` (`idTeam`),
-  KEY `Fk_Pilot_Discipline` (`idDiscipline`)
-) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8;
+  `country` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pilot`
+-- Contenu de la table `pilot`
 --
 
 INSERT INTO `pilot` (`idPilot`, `namePilot`, `idTeam`, `idDiscipline`, `pilotNumber`, `placeBirth`, `dateBirth`, `country`) VALUES
@@ -276,28 +259,22 @@ INSERT INTO `pilot` (`idPilot`, `namePilot`, `idTeam`, `idDiscipline`, `pilotNum
 -- --------------------------------------------------------
 
 --
--- Table structure for table `race`
+-- Structure de la table `race`
 --
 
-DROP TABLE IF EXISTS `race`;
-CREATE TABLE IF NOT EXISTS `race` (
-  `ìdRace` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `race` (
+  `ìdRace` int(11) NOT NULL,
   `idCircuit` int(11) NOT NULL,
   `idPilot` int(11) NOT NULL,
   `idTeam` int(11) NOT NULL,
   `idDiscipline` int(11) NOT NULL,
   `idSeason` int(11) NOT NULL,
   `position` int(11) DEFAULT NULL,
-  `points` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ìdRace`),
-  KEY `Fk_Race_Circuit` (`idCircuit`),
-  KEY `Fk_Race_Pilot` (`idPilot`),
-  KEY `Fk_Race_Discipline` (`idDiscipline`),
-  KEY `Fk_Race_Season` (`idSeason`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+  `points` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `race`
+-- Contenu de la table `race`
 --
 
 INSERT INTO `race` (`ìdRace`, `idCircuit`, `idPilot`, `idTeam`, `idDiscipline`, `idSeason`, `position`, `points`) VALUES
@@ -405,20 +382,17 @@ INSERT INTO `race` (`ìdRace`, `idCircuit`, `idPilot`, `idTeam`, `idDiscipline`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `season`
+-- Structure de la table `season`
 --
 
-DROP TABLE IF EXISTS `season`;
-CREATE TABLE IF NOT EXISTS `season` (
-  `idSeason` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `season` (
+  `idSeason` int(11) NOT NULL,
   `year` int(11) NOT NULL,
-  `idDiscipline` int(11) NOT NULL,
-  PRIMARY KEY (`idSeason`),
-  KEY `Fk_Season_Discipline` (`idDiscipline`)
-) ENGINE=InnoDB AUTO_INCREMENT=2018 DEFAULT CHARSET=utf8;
+  `idDiscipline` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `season`
+-- Contenu de la table `season`
 --
 
 INSERT INTO `season` (`idSeason`, `year`, `idDiscipline`) VALUES
@@ -428,20 +402,17 @@ INSERT INTO `season` (`idSeason`, `year`, `idDiscipline`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `team`
+-- Structure de la table `team`
 --
 
-DROP TABLE IF EXISTS `team`;
-CREATE TABLE IF NOT EXISTS `team` (
+CREATE TABLE `team` (
   `idTeam` int(11) NOT NULL,
   `nameTeam` varchar(255) DEFAULT NULL,
-  `idDiscipline` int(11) NOT NULL,
-  PRIMARY KEY (`idTeam`),
-  KEY `Fk_Team_Discipline` (`idDiscipline`)
+  `idDiscipline` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `team`
+-- Contenu de la table `team`
 --
 
 INSERT INTO `team` (`idTeam`, `nameTeam`, `idDiscipline`) VALUES
@@ -479,32 +450,149 @@ INSERT INTO `team` (`idTeam`, `nameTeam`, `idDiscipline`) VALUES
 (122, 'Premium Motorsports', 1),
 (123, 'TriStar Motorsports', 1);
 
+-- --------------------------------------------------------
+
 --
--- Constraints for dumped tables
+-- Structure de la table `videos`
+--
+
+CREATE TABLE `videos` (
+  `idVideos` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `link` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Index pour les tables exportées
 --
 
 --
--- Constraints for table `articles`
+-- Index pour la table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`idArticle`),
+  ADD KEY `Fk_Article_Category` (`idCategory`);
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`idCategory`);
+
+--
+-- Index pour la table `circuit`
+--
+ALTER TABLE `circuit`
+  ADD PRIMARY KEY (`idCircuit`,`idSeason`),
+  ADD KEY `Fk_Circuit_Discipline` (`idDiscipline`),
+  ADD KEY `Fk_Circuit_Season` (`idSeason`);
+
+--
+-- Index pour la table `discipline`
+--
+ALTER TABLE `discipline`
+  ADD PRIMARY KEY (`idDiscipline`);
+
+--
+-- Index pour la table `pilot`
+--
+ALTER TABLE `pilot`
+  ADD PRIMARY KEY (`idPilot`),
+  ADD KEY `Fk_Pilot_Team` (`idTeam`),
+  ADD KEY `Fk_Pilot_Discipline` (`idDiscipline`);
+
+--
+-- Index pour la table `race`
+--
+ALTER TABLE `race`
+  ADD PRIMARY KEY (`ìdRace`),
+  ADD KEY `Fk_Race_Circuit` (`idCircuit`),
+  ADD KEY `Fk_Race_Pilot` (`idPilot`),
+  ADD KEY `Fk_Race_Discipline` (`idDiscipline`),
+  ADD KEY `Fk_Race_Season` (`idSeason`);
+
+--
+-- Index pour la table `season`
+--
+ALTER TABLE `season`
+  ADD PRIMARY KEY (`idSeason`),
+  ADD KEY `Fk_Season_Discipline` (`idDiscipline`);
+
+--
+-- Index pour la table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`idTeam`),
+  ADD KEY `Fk_Team_Discipline` (`idDiscipline`);
+
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`idVideos`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `idArticle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `idCategory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `circuit`
+--
+ALTER TABLE `circuit`
+  MODIFY `idCircuit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+--
+-- AUTO_INCREMENT pour la table `pilot`
+--
+ALTER TABLE `pilot`
+  MODIFY `idPilot` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+--
+-- AUTO_INCREMENT pour la table `race`
+--
+ALTER TABLE `race`
+  MODIFY `ìdRace` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+--
+-- AUTO_INCREMENT pour la table `season`
+--
+ALTER TABLE `season`
+  MODIFY `idSeason` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2018;
+--
+-- AUTO_INCREMENT pour la table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `idVideos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `articles`
 --
 ALTER TABLE `articles`
   ADD CONSTRAINT `Fk_Article_Category` FOREIGN KEY (`idCategory`) REFERENCES `category` (`idCategory`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `circuit`
+-- Contraintes pour la table `circuit`
 --
 ALTER TABLE `circuit`
   ADD CONSTRAINT `Fk_Circuit_Discipline` FOREIGN KEY (`idDiscipline`) REFERENCES `discipline` (`idDiscipline`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Fk_Circuit_Season` FOREIGN KEY (`idSeason`) REFERENCES `season` (`idSeason`) ON DELETE CASCADE;
 
 --
--- Constraints for table `pilot`
+-- Contraintes pour la table `pilot`
 --
 ALTER TABLE `pilot`
   ADD CONSTRAINT `Fk_Pilot_Discipline` FOREIGN KEY (`idDiscipline`) REFERENCES `discipline` (`idDiscipline`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Fk_Pilot_Team` FOREIGN KEY (`idTeam`) REFERENCES `team` (`idTeam`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `race`
+-- Contraintes pour la table `race`
 --
 ALTER TABLE `race`
   ADD CONSTRAINT `Fk_Race_Circuit` FOREIGN KEY (`idCircuit`) REFERENCES `circuit` (`idCircuit`) ON DELETE CASCADE,
@@ -513,17 +601,16 @@ ALTER TABLE `race`
   ADD CONSTRAINT `Fk_Race_Season` FOREIGN KEY (`idSeason`) REFERENCES `season` (`idSeason`) ON DELETE CASCADE;
 
 --
--- Constraints for table `season`
+-- Contraintes pour la table `season`
 --
 ALTER TABLE `season`
   ADD CONSTRAINT `Fk_Season_Discipline` FOREIGN KEY (`idDiscipline`) REFERENCES `discipline` (`idDiscipline`) ON DELETE CASCADE;
 
 --
--- Constraints for table `team`
+-- Contraintes pour la table `team`
 --
 ALTER TABLE `team`
   ADD CONSTRAINT `Fk_Team_Discipline` FOREIGN KEY (`idDiscipline`) REFERENCES `discipline` (`idDiscipline`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

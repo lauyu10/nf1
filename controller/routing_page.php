@@ -34,6 +34,8 @@ a table will be used in the view videos.tpl
 */
 function videos()
 {
+	require('controller/loading_videos.php');
+	$table_videos = get_videos();
 	require('view/videos.tpl');
 }
 
