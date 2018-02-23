@@ -16,3 +16,12 @@ function display_hello()
 }
 */
 //display_hello();
+$(document).ready(function(){
+
+  console.log("jQuery est prêt !");
+
+  $('a.text-white').hover(function(){
+    console.log("je suis sur un lien");
+  });
+  
+});
