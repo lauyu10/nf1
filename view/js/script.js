@@ -23,5 +23,7 @@ $(document).ready(function(){
   $('a.text-white').hover(function(){
     console.log("je suis sur un lien");
   });
+
+  $.ajax();
   
 });
