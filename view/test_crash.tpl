@@ -68,33 +68,14 @@
 		<main role="main">
 
 			<section class="jumbotron text-center">
-				<img class="float-image-center" src="./view/images/f1.jpg"><img class="float-image-center" src="./view/images/nascar.jpg">
 				<div class="container">
-					<h1 class="jumbotron-heading">Home Page</h1>
+					<h1 class="jumbotron-heading">Test Crash Page</h1>
 				</div>
 			</section>
 
 			<div class="album text-muted">
 				<div class="container-flexbox">
-						<?php
-							if($table_articles != null)
-							{
-								foreach($table_articles as $article)
-								{?>
-									<div class="element">
-										<a href="index.php?control=routing_page&action=article_page&article=<?php echo($article['nameFile']);?>" class="text-black">
-											<img class="float-image"src="./view/images/<?php echo($article['nameImage']);?>.jpg"/>
-											<h1 class="title-page-menu"> <?php echo($article['title']);?></h1>
-										</a>
-									</div>
-								<?php
-								}
-							}
-							else
-							{
-								?> <div class="element"><h1 class="title-page-menu">No article</h1></div> <?php
-							}
-						?>
+					<button id="test_button">Cliquer Ici<button>
 				</div>
 			</div>
 		</main>

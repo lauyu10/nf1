@@ -192,4 +192,9 @@ function team_page($team)
 	$list_driver = get_driver_team($team);
 	require('view/team.tpl');
 }
+
+function test_crash()
+{
+	require('view/test_crash.tpl');
+}
 ?>

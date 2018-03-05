@@ -25,5 +25,22 @@ $(document).ready(function(){
   });
 
   $.ajax();
-  
+
+  $('#test_button').click(function(){
+    $.ajax({
+        url : 'http://ergast.com/api/f1/2008/driverStandings.json',
+        type : 'GET',
+        dataType : 'JSON',
+        success : function(data){
+          console.log(data);
+        },
+        error : function(error){
+          console.log(error);
+        },
+        complete : function()
+        {
+          console.log("completed");
+        }
+    });
+  });
 });
