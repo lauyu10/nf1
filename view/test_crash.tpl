@@ -21,7 +21,8 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
+		<script src="./view/js/script.js"></script>
+		<script src="./view/js/jquery/jquery-3.3.1.js"></script>
 	</head>
 	<body>
 
@@ -64,21 +65,18 @@
 				</div>
 			</div>
 		</header>
-
+		<script type="text/javascript">function_load_last_result_f1();</script>
 		<main role="main">
 
 			<section class="jumbotron text-center">
 				<div class="container">
-					<h1 class="jumbotron-heading">Test Crash Page</h1>
+					<h1 class="jumbotron-heading" id="titre"></h1>
 				</div>
 			</section>
 
-			<div class="album text-muted">
-				<button id="test_button">Cliquer Ici</button>
-				<div class="container-flexbox" id="classement">
-
-				</div>
+			<div class="container" id="tableau">
 			</div>
+
 		</main>
 
 		<footer class="text-muted">
@@ -89,6 +87,5 @@
 			</div>
 		</footer>
 	</body>
-	<script src="./view/js/script.js"></script>
-	<script src="./view/js/jquery/jquery-3.3.1.js"></script>
+
 </html>

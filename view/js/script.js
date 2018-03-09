@@ -26,25 +26,6 @@ $(document).ready(function(){
 
   $.ajax();
 
-  $('#test_button').click(function(){
-    $('#classement').empty();
-    $.ajax({
-        url : 'http://ergast.com/api/f1/current/driverStandings.json',
-        type : 'GET',
-        dataType : 'JSON',
-        success : function(data){
-          console.log(data);
-          $('#classement').prepend("<button>" + data.MRData.StandingsTable.StandingsLists[0].season + "</button>");
-        },
-        error : function(error){
-          console.log(error);
-        },
-        complete : function()
-        {
-          console.log("completed");
-        }
-    });
-  });
 
   /*
   $('#test_button').click(function(){
@@ -67,3 +48,27 @@ $(document).ready(function(){
   });
   */
 });
+
+function function_load_last_result_f1()
+{
+  $('#classement').empty();
+  $.ajax({
+      url : 'http://ergast.com/api/f1/current/driverStandings.json',
+      type : 'GET',
+      dataType : 'JSON',
+      success : function(data){
+        console.log(data);
+        $('#titre').prepend("Formula 1 Last Driver Standings season : " + data.MRData.StandingsTable.StandingsLists[0].season + " after round : " + data.MRData.StandingsTable.StandingsLists[0].round);
+        $('#tableau').prepend(
+          
+        );
+      },
+      error : function(error){
+        console.log(error);
+      },
+      complete : function()
+      {
+        console.log("completed");
+      }
+  });
+};
