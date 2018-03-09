@@ -25,15 +25,16 @@ $(document).ready(function(){
   });
 
   $.ajax();
-/*
+
   $('#test_button').click(function(){
+    $('#classement').empty();
     $.ajax({
-        url : 'http://ergast.com/api/f1/2008/driverStandings.json',
+        url : 'http://ergast.com/api/f1/current/driverStandings.json',
         type : 'GET',
         dataType : 'JSON',
         success : function(data){
           console.log(data);
-
+          $('#classement').prepend("<button>" + data.MRData.StandingsTable.StandingsLists[0].season + "</button>");
         },
         error : function(error){
           console.log(error);
@@ -44,7 +45,7 @@ $(document).ready(function(){
         }
     });
   });
-*/
+
   /*
   $('#test_button').click(function(){
     $.ajax({

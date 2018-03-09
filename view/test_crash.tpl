@@ -74,8 +74,9 @@
 			</section>
 
 			<div class="album text-muted">
-				<div class="container-flexbox">
-					<button id="test_button">Cliquer Ici<button>
+				<button id="test_button">Cliquer Ici</button>
+				<div class="container-flexbox" id="classement">
+
 				</div>
 			</div>
 		</main>
