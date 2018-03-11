@@ -24,9 +24,28 @@ $(document).ready(function(){
     console.log("je suis sur un lien");
   });
 
+  $('#select_year').click(function(){
+    $('#form_f1_season_selection').css({"display":"block"});
+  });
+
+  $('span.close').click(function(){
+    $('#form_f1_season_selection').css({"display":"none"});
+  });
+
+  $('#selected_year').click(function(){
+    $('#form_f1_season_selection').css({"display":"none"});
+    console.log($('#year').val());
+    function_load_one_standing($('#year').val());
+  });
+
+  var form_f1 = document.getElementById('form_f1_season_selection');
+  $(window).on("click",function(e) {
+      if(e.target == form_f1){
+        form_f1.style.display = "none";
+      };
+  });
+
   $.ajax();
-
-
   /*
   $('#test_button').click(function(){
     $.ajax({
@@ -49,8 +68,7 @@ $(document).ready(function(){
   */
 });
 
-function function_load_last_result_f1()
-{
+function function_load_last_standing_f1(){
   $.ajax({
       url : 'http://ergast.com/api/f1/current/driverStandings.json',
       type : 'GET',
@@ -65,7 +83,13 @@ function function_load_last_result_f1()
         data.MRData.StandingsTable.StandingsLists[0].DriverStandings.forEach(function(element){
           lignes_tableau += "<tr>";
           lignes_tableau += "<th>" + element.position + "</th>";
-          lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
+          if(element.Driver.permanentNumber == null){
+            lignes_tableau += "<th>N/A</th>";
+          }
+          else {
+            lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
+          }
+          lignes_tableau += "<th>" + "<a href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
           lignes_tableau += "<th>" + "<a href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
           lignes_tableau += "<th>" + "<a href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
           lignes_tableau += "<th>" + element.points + "</th>";
@@ -75,6 +99,56 @@ function function_load_last_result_f1()
         lignes_tableau += "</table>";
         lignes_tableau += "</div>";
         $('#tableau').html(lignes_tableau);
+      },
+      error : function(error){
+        console.log(error);
+      },
+      complete : function(){
+        console.log("completed");
+      }
+  });
+};
+
+function function_load_one_standing(year)
+{
+  console.log("fonction pour charger un clasement d'une saison");
+  var adresse = "http://ergast.com/api/f1/"+year+"/driverStandings.json";
+  $.ajax({
+      url : adresse,
+      type : 'GET',
+      dataType : 'JSON',
+      success : function(data){
+        console.log(data);
+        $('#titre').empty();
+        $('#tableau').empty();
+        if(data.MRData.total == 0){
+          $('#titre').html("No result");
+        }
+        else {
+          $('#titre').append("Formula 1 Standings season : " + data.MRData.StandingsTable.StandingsLists[0].season + " after round : " + data.MRData.StandingsTable.StandingsLists[0].round );
+          var lignes_tableau ="";
+          lignes_tableau += "<div class='container'>";
+          lignes_tableau += "<table class='table'><thead><tr><th>Position</th><th>NO</th><th>Driver</th><th>Team</th><th>Points</th></tr></thead><tbody>";
+
+          data.MRData.StandingsTable.StandingsLists[0].DriverStandings.forEach(function(element){
+            lignes_tableau += "<tr>";
+            lignes_tableau += "<th>" + element.position + "</th>";
+            if(element.Driver.permanentNumber == null){
+              lignes_tableau += "<th>N/A</th>";
+            }
+            else {
+              lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
+            }
+            lignes_tableau += "<th>" + "<a href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+            lignes_tableau += "<th>" + "<a href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
+            lignes_tableau += "<th>" + element.points + "</th>";
+            lignes_tableau += "</tr>";
+          });
+          lignes_tableau += "</tbody>";
+          lignes_tableau += "</table>";
+          lignes_tableau += "</div>";
+          $('#tableau').html(lignes_tableau);
+        }
       },
       error : function(error){
         console.log(error);

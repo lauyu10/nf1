@@ -17,7 +17,6 @@
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -65,7 +64,7 @@
 				</div>
 			</div>
 		</header>
-		<script type="text/javascript">function_load_last_result_f1();</script>
+		<script type="text/javascript">function_load_last_standing_f1();</script>
 		<main role="main">
 
 			<section class="jumbotron text-center">
@@ -73,11 +72,24 @@
 					<h1 class="jumbotron-heading" id="titre"></h1>
 				</div>
 			</section>
+			<button id="select_year">Choose a F1 Season</button>
 
-			<div class="container" id="tableau">
-				
+			<div id="form_f1_season_selection" title="Select year of a F1 season">
+			  <div id="form_content">
+					<span class="close">&times;</span>
+					<label for="Year">Choose the Year of one season</label>
+		      <select id="year" name="year">
+						<?php for ($compteur = date("Y");$compteur >= 1950;$compteur--){
+							?> <option><?php echo($compteur); ?> </option>
+						<?php }; ?>
+					</select>
+					<button id="selected_year">Submit</button>
+			  </div>
 			</div>
 
+			<div class="container" id="tableau">
+			</div>
+			
 		</main>
 
 		<footer class="text-muted">
