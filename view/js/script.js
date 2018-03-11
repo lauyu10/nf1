@@ -51,7 +51,6 @@ $(document).ready(function(){
 
 function function_load_last_result_f1()
 {
-  $('#classement').empty();
   $.ajax({
       url : 'http://ergast.com/api/f1/current/driverStandings.json',
       type : 'GET',
