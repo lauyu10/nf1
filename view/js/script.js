@@ -42,17 +42,18 @@ $(document).ready(function(){
     function_load_standings_f1();
   });
 
-  $('#change_standing').click(function(){
-    if(standing == 'driver')
+  $('#standing_input').click(function(){
+    console.log($('#standing_input')[0].checked);
+    if($('#standing_input')[0].checked)
     {
       standing = 'constructor';
-      $('#change_standing').empty()
+      $('#change_standing').empty();
       $('#change_standing').html("Change Standings to Driver");
     }
     else
     {
       standing = 'driver';
-      $('#change_standing').empty()
+      $('#change_standing').empty();
       $('#change_standing').html("Change Standings to Constructor");
     }
     function_load_standings_f1();
@@ -64,28 +65,6 @@ $(document).ready(function(){
         form_f1.style.display = "none";
       };
   });
-
-  $.ajax();
-  /*
-  $('#test_button').click(function(){
-    $.ajax({
-        url : 'http://ergast.com/api/f1/seasons.json',
-        type : 'GET',
-        dataType : 'JSON',
-        success : function(data){
-          console.log(data);
-
-        },
-        error : function(error){
-          console.log(error);
-        },
-        complete : function()
-        {
-          console.log("completed");
-        }
-    });
-  });
-  */
 });
 
 function function_load_standings_f1(){

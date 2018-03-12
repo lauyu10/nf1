@@ -72,8 +72,13 @@
 					<h1 class="jumbotron-heading" id="titre"></h1>
 				</div>
 			</section>
-			<button id="select_year">Choose a F1 Season</button>
-			<button id="change_standing">Change Standings to Constrcutor</button>
+			<button id="select_year" class="btn btn-primary">Choose a F1 Season</button>
+
+			<h4 id="change_standing">Change Standings to Constructor</h2>
+			<label class="switch" id="standing_switch">
+			  <input type="checkbox" id='standing_input'>
+			  <span class="slider round"></span>
+			</label>
 
 			<div id="form_f1_season_selection" title="Select year of a F1 season">
 			  <div id="form_content">
@@ -84,7 +89,7 @@
 							?> <option><?php echo($compteur); ?> </option>
 						<?php }; ?>
 					</select>
-					<button id="selected_year">Submit</button>
+					<button id="selected_year" class="btn btn-primary">Submit</button>
 			  </div>
 			</div>
 
