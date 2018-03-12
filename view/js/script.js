@@ -46,7 +46,6 @@ $(document).ready(function(){
       console.log($('#year_race').val());
       year = $('#year_race').val();
       function_load_races_in_season();
-
   });
 
   $('#selected_race').click(function(){
@@ -206,6 +205,21 @@ function function_load_races_in_season()
       dataType : 'JSON',
       success : function(data){
         console.log(data);
+
+        if(data.MRData.total == 0)
+        {
+          $('#error_message').empty();
+          $('#error_message').html("No result");
+        }
+        else
+        {
+          year = data.MRData.RaceTable.season;
+          var lignes_course;
+          data.MRData.RaceTable.Races.forEach(function(element){
+            lignes_course += "<option value='"+ element.round +"'>"+ element.name + " / ";
+          });
+
+        }
       },
       error : function(error){
         console.log(error);
