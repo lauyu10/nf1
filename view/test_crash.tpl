@@ -83,11 +83,12 @@
 							?> <option><?php echo($compteur); ?> </option>
 						<?php }; ?>
 					</select>
+					<button id="submit_year_race">Validate Year</button>
 					<label for="Race">Choose the race</label>
 					<select id="race" name="race">
-						<option></option>
 					</select>
 					<button id="selected_race" class="btn btn-primary">Submit</button>
+					<h1 id="error_message"><h1>
 			  </div>
 			</div>
 

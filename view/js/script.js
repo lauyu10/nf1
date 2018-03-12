@@ -42,6 +42,18 @@ $(document).ready(function(){
     function_load_standings_f1();
   });
 
+  $('#submit_year_race').click(function(){
+      console.log($('#year_race').val());
+      year = $('#year_race').val();
+      function_load_races_in_season();
+
+  });
+
+  $('#selected_race').click(function(){
+    $('#form_f1_selection').css({"display":"none"});
+    console.log($('#year_race').val());
+  });
+
   $('#standing_input').click(function(){
     console.log($('#standing_input')[0].checked);
     if($('#standing_input')[0].checked)
@@ -184,3 +196,22 @@ function function_load_race_f1()
       }
   });
 };
+
+function function_load_races_in_season()
+{
+  var adresse = "http://ergast.com/api/f1/"+ year +".json"
+  $.ajax({
+      url : adresse,
+      type : 'GET',
+      dataType : 'JSON',
+      success : function(data){
+        console.log(data);
+      },
+      error : function(error){
+        console.log(error);
+      },
+      complete : function(){
+        console.log("completed");
+      }
+  });
+}
