@@ -72,7 +72,7 @@
 					<h1 class="jumbotron-heading" id="titre"></h1>
 				</div>
 			</section>
-			<button id="select_year" class="btn btn-primary">Choose a F1 Season</button>
+			<button id="select" class="btn btn-primary">Choose a F1 Season</button>
 
 			<h4 id="change_standing">Change Standings to Constructor</h2>
 			<label class="switch" id="standing_switch">
@@ -80,7 +80,7 @@
 			  <span class="slider round"></span>
 			</label>
 
-			<div id="form_f1_season_selection" title="Select year of a F1 season">
+			<div id="form_f1_selection" title="Select year of a F1 season">
 			  <div id="form_content">
 					<span class="close">&times;</span>
 					<label for="Year">Choose the Year of one season</label>

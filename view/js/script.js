@@ -27,16 +27,16 @@ $(document).ready(function(){
     console.log("je suis sur un lien");
   });
 
-  $('#select_year').click(function(){
-    $('#form_f1_season_selection').css({"display":"block"});
+  $('#select').click(function(){
+    $('#form_f1_selection').css({"display":"block"});
   });
 
   $('span.close').click(function(){
-    $('#form_f1_season_selection').css({"display":"none"});
+    $('#form_f1_selection').css({"display":"none"});
   });
 
   $('#selected_year').click(function(){
-    $('#form_f1_season_selection').css({"display":"none"});
+    $('#form_f1_selection').css({"display":"none"});
     console.log($('#year').val());
     year = $('#year').val();
     function_load_standings_f1();
@@ -59,7 +59,7 @@ $(document).ready(function(){
     function_load_standings_f1();
   });
 
-  var form_f1 = document.getElementById('form_f1_season_selection');
+  var form_f1 = document.getElementById('form_f1_selection');
   $(window).on("click",function(e) {
       if(e.target == form_f1){
         form_f1.style.display = "none";
@@ -167,10 +167,10 @@ function function_load_standings_f1(){
   });
 };
 
-function function_load_racef1()
+function function_load_race_f1()
 {
   $.ajax({
-      url : http://ergast.com/api/f1/current/last/results.json,
+      url : "http://ergast.com/api/f1/current/last/results.json",
       type : 'GET',
       dataType : 'JSON',
       success : function(data){

@@ -72,9 +72,9 @@
 					<h1 class="jumbotron-heading" id="titre"></h1>
 				</div>
 			</section>
-			<button id="select_race" class="btn btn-primary">Choose a F1 Race</button>
+			<button id="select" class="btn btn-primary">Choose a F1 Race</button>
 
-			<div id="form_f1_race_selection" title="Select year of a F1 season">
+			<div id="form_f1_selection" title="Select year of a F1 season">
 			  <div id="form_content">
 					<span class="close">&times;</span>
 					<label for="Year">Choose the Year of one season</label>
