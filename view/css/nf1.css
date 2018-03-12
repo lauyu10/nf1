@@ -110,3 +110,8 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+#change_standing
+{
+	float: right;
+}

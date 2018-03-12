@@ -64,7 +64,7 @@
 				</div>
 			</div>
 		</header>
-		<script type="text/javascript">function_load_last_standing_f1();</script>
+		<script type="text/javascript">function_load_standings_f1();</script>
 		<main role="main">
 
 			<section class="jumbotron text-center">
@@ -73,6 +73,7 @@
 				</div>
 			</section>
 			<button id="select_year">Choose a F1 Season</button>
+			<button id="change_standing">Change Standings to Constrcutor</button>
 
 			<div id="form_f1_season_selection" title="Select year of a F1 season">
 			  <div id="form_content">
@@ -89,7 +90,7 @@
 
 			<div class="container" id="tableau">
 			</div>
-			
+
 		</main>
 
 		<footer class="text-muted">
