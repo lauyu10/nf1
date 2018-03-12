@@ -165,5 +165,22 @@ function function_load_standings_f1(){
         console.log("completed");
       }
   });
+};
 
+function function_load_racef1()
+{
+  $.ajax({
+      url : http://ergast.com/api/f1/current/last/results.json,
+      type : 'GET',
+      dataType : 'JSON',
+      success : function(data){
+        console.log(data);
+      },
+      error : function(error){
+        console.log(error);
+      },
+      complete : function(){
+        console.log("completed");
+      }
+  });
 };

@@ -94,8 +94,6 @@ the table ($table_seasons) will be used in the view standing_f1.tpl
 */
 function standing_f1()
 {
-	require('controller/loading_results.php');
-	$table_seasons = loading_season(f1);
 	require('view/standing_f1.tpl');
 }
 

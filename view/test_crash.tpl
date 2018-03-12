@@ -64,7 +64,7 @@
 				</div>
 			</div>
 		</header>
-		<script type="text/javascript">function_load_standings_f1();</script>
+		<script type="text/javascript">function_load_race_f1();</script>
 		<main role="main">
 
 			<section class="jumbotron text-center">
@@ -72,24 +72,22 @@
 					<h1 class="jumbotron-heading" id="titre"></h1>
 				</div>
 			</section>
-			<button id="select_year" class="btn btn-primary">Choose a F1 Season</button>
+			<button id="select_race" class="btn btn-primary">Choose a F1 Race</button>
 
-			<h4 id="change_standing">Change Standings to Constructor</h2>
-			<label class="switch" id="standing_switch">
-			  <input type="checkbox" id='standing_input'>
-			  <span class="slider round"></span>
-			</label>
-
-			<div id="form_f1_season_selection" title="Select year of a F1 season">
+			<div id="form_f1_race_selection" title="Select year of a F1 season">
 			  <div id="form_content">
 					<span class="close">&times;</span>
 					<label for="Year">Choose the Year of one season</label>
-		      <select id="year" name="year">
+		      <select id="year_race" name="year_race">
 						<?php for ($compteur = date("Y");$compteur >= 1950;$compteur--){
 							?> <option><?php echo($compteur); ?> </option>
 						<?php }; ?>
 					</select>
-					<button id="selected_year" class="btn btn-primary">Submit</button>
+					<label for="Race">Choose the race</label>
+					<select id="race" name="race">
+						<option></option>
+					</select>
+					<button id="selected_race" class="btn btn-primary">Submit</button>
 			  </div>
 			</div>
 
