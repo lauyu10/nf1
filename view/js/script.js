@@ -19,6 +19,7 @@ function display_hello()
 
 var standing;
 var year;
+var race;
 $(document).ready(function(){
 
   console.log("jQuery est prêt !");
@@ -29,6 +30,11 @@ $(document).ready(function(){
 
   $('#select').click(function(){
     $('#form_f1_selection').css({"display":"block"});
+  });
+
+  $('#select_race').click(function(){
+    $('#form_f1_selection').css({"display":"block"});
+    $('#race').empty();
   });
 
   $('span.close').click(function(){
@@ -48,11 +54,6 @@ $(document).ready(function(){
       function_load_races_in_season();
   });
 
-  $('#selected_race').click(function(){
-    $('#form_f1_selection').css({"display":"none"});
-    console.log($('#year_race').val());
-  });
-
   $('#standing_input').click(function(){
     console.log($('#standing_input')[0].checked);
     if($('#standing_input')[0].checked)
@@ -69,6 +70,13 @@ $(document).ready(function(){
     }
     function_load_standings_f1();
   });
+
+  $('#selected_race').click(function(){
+    $('#form_f1_selection').css({"display":"none"});
+    race = $('#race').val();
+    console.log($('#race').val());
+    function_load_race_f1();
+  })
 
   var form_f1 = document.getElementById('form_f1_selection');
   $(window).on("click",function(e) {
@@ -180,19 +188,29 @@ function function_load_standings_f1(){
 
 function function_load_race_f1()
 {
+  var adresse;
+  if(year == null || race == null)
+  {
+    adresse = "http://ergast.com/api/f1/current/last/results.json";
+  }
+  else
+  {
+     adresse = "http://ergast.com/api/f1/"+ year +"/" + race + "/results.json";
+  }
   $.ajax({
-      url : "http://ergast.com/api/f1/current/last/results.json",
-      type : 'GET',
-      dataType : 'JSON',
-      success : function(data){
-        console.log(data);
-      },
-      error : function(error){
-        console.log(error);
-      },
-      complete : function(){
-        console.log("completed");
-      }
+    url : adresse,
+    type : 'GET',
+    dataType : 'JSON',
+    success : function(data){
+      console.log(data);
+      
+    },
+    error : function(error){
+      console.log(error);
+    },
+    complete : function(){
+      console.log("completed");
+    }
   });
 };
 
