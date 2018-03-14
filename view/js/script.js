@@ -216,9 +216,9 @@ function function_load_races_in_season()
           year = data.MRData.RaceTable.season;
           var lignes_course;
           data.MRData.RaceTable.Races.forEach(function(element){
-            lignes_course += "<option value='"+ element.round +"'>"+ element.name + " / ";
+            lignes_course += "<option value='"+ element.round +"'>"+ element.raceName + " / " + element.Circuit.circuitName + "</option>";
           });
-
+          $("#race").html(lignes_course);
         }
       },
       error : function(error){
