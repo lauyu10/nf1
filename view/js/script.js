@@ -121,14 +121,8 @@ function function_load_standings_f1(){
 
             data.MRData.StandingsTable.StandingsLists[0].DriverStandings.forEach(function(element){
               lignes_tableau += "<tr>";
-              if($.isNumeric(element.positionText))
-              {
-                lignes_tableau += "<th>" + element.position + "</th>";
-              }
-              else
-              {
-                lignes_tableau += "<th>DSQ</th>";
-              }
+              lignes_tableau += "<th>" + element.positionText + "</th>";
+
               if(element.Driver.permanentNumber == null){
                 lignes_tableau += "<th>N/A</th>";
               }
@@ -156,14 +150,7 @@ function function_load_standings_f1(){
 
             data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.forEach(function(element){
               lignes_tableau += "<tr>";
-              if($.isNumeric(element.positionText))
-              {
-                lignes_tableau += "<th>" + element.position + "</th>";
-              }
-              else
-              {
-                lignes_tableau += "<th>DSQ</th>";
-              }
+              lignes_tableau += "<th>" + element.positionText + "</th>";
               lignes_tableau += "<th>" + "<a href='"+ element.Constructor.url +"'>" + element.Constructor.name + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.Constructor.nationality + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.wins + "</th>";
@@ -174,6 +161,7 @@ function function_load_standings_f1(){
             lignes_tableau += "</table>";
             lignes_tableau += "</div>";
             $('#tableau').html(lignes_tableau);
+
           }
         }
       },
@@ -203,7 +191,39 @@ function function_load_race_f1()
     dataType : 'JSON',
     success : function(data){
       console.log(data);
-      
+      $("#titre").empty();
+      $("#tableau").empty();
+      if(data.MRData.total == 0)
+      {
+        $("#titre").html("No results");
+      }
+      else
+      {
+        $("#titre").html("Formula 1 season : " + data.MRData.RaceTable.Races[0].season + " / round : " + data.MRData.RaceTable.Races[0].round + " / at : " + data.MRData.RaceTable.Races[0].raceName);
+        var lignes_tableau = "";
+        lignes_tableau += "<div class='container'>";
+        lignes_tableau += "<table class='table'><thead><tr><th>Position</th><th>NO</th><th>Driver</th><th>Team</th><th>Points</th><th>Lap(s)</th></tr></thead><tbody>";
+        data.MRData.RaceTable.Races[0].Results.forEach(function(element)
+        {
+          lignes_tableau += "<tr>";
+          lignes_tableau += "<th>" + element.positionText + "</th>";
+          if(element.Driver.permanentNumber == null)
+          {
+            lignes_tableau += "<th>N/A</th>";
+          }
+          else
+          {
+            lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
+          }
+          lignes_tableau += "<th>" + "<a href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+          lignes_tableau += "<th>" + "<a href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
+          lignes_tableau += "<th>" + element.points + "</th>";
+          lignes_tableau += "<th>" + element.laps + "</th>";
+          lignes_tableau += "</tr>";
+        });
+
+      }
+      $("#tableau").html(lignes_tableau);
     },
     error : function(error){
       console.log(error);
