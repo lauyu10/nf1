@@ -221,7 +221,6 @@ function function_load_race_f1()
           lignes_tableau += "<th>" + element.laps + "</th>";
           lignes_tableau += "</tr>";
         });
-
       }
       $("#tableau").html(lignes_tableau);
     },
