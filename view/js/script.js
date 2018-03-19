@@ -35,6 +35,7 @@ $(document).ready(function(){
   $('#select_race').click(function(){
     $('#form_f1_selection').css({"display":"block"});
     $('#race').empty();
+    $('#error_message').empty();
   });
 
   $('span.close').click(function(){
@@ -48,10 +49,18 @@ $(document).ready(function(){
     function_load_standings_f1();
   });
 
-  $('#submit_year_race').click(function(){
+  $('#year_race').change(function(){
+    if($('#year_race').val() == "")
+    {
+      $('#error_message').html('year missing');
+    }
+    else
+    {
+      $('#error_message').empty();
       console.log($('#year_race').val());
       year = $('#year_race').val();
-      function_load_races_in_season();
+      function_load_races_in_season_f1();
+    }
   });
 
   $('#standing_input').click(function(){
@@ -72,11 +81,18 @@ $(document).ready(function(){
   });
 
   $('#selected_race').click(function(){
-    $('#form_f1_selection').css({"display":"none"});
-    race = $('#race').val();
-    console.log($('#race').val());
-    function_load_race_f1();
-  })
+    if($('#race').val() == null)
+    {
+      $('#error_message').html('data missing');
+    }
+    else
+    {
+      $('#form_f1_selection').css({"display":"none"});
+      race = $('#race').val();
+      console.log($('#race').val());
+      function_load_race_f1();
+    }
+  });
 
   var form_f1 = document.getElementById('form_f1_selection');
   $(window).on("click",function(e) {
@@ -84,6 +100,26 @@ $(document).ready(function(){
         form_f1.style.display = "none";
       };
   });
+
+  $('#select_race_nascar').click(function(){
+    $('#form_nascar_selection').css({"display":"block"});
+    $('#race_nascar').empty();
+  });
+
+  $('#year_race_nascar').change(function(){
+    console.log($('#year_race_nascar').val());
+    if($('#year_race_nascar').val() == "")
+    {
+      $('#error_message').html('year missing');
+    }
+    else
+    {
+      $('#error_message').empty();
+      year = $('#year_race_nascar').val();
+      function_load_race_nascar();
+    }
+  });
+
 });
 
 function function_load_standings_f1(){
@@ -233,7 +269,7 @@ function function_load_race_f1()
   });
 };
 
-function function_load_races_in_season()
+function function_load_races_in_season_f1()
 {
   var adresse = "http://ergast.com/api/f1/"+ year +".json"
   $.ajax({
@@ -265,4 +301,29 @@ function function_load_races_in_season()
         console.log("completed");
       }
   });
+}
+
+function function_load_race_nascar()
+{
+  var adresse = "http://api.sportradar.us/nascar-t3/mc/2017/races/schedule.json?api_key=7uerjqcasnrvsejva5ssmu2q";
+  $.ajax({
+      url : adresse,
+      type : 'GET',
+      dataType : 'JSON',
+      success : function(data){
+        console.log(data);
+      },
+      error : function(error){
+        console.log("error");
+        console.log(error);
+      },
+      complete : function(){
+        console.log("completed");
+      }
+  });
+}
+
+function function_load_races_in_season_nascar()
+{
+
 }

@@ -79,16 +79,16 @@
 					<span class="close">&times;</span>
 					<label for="Year">Choose the Year of one season</label>
 		      <select id="year_race" name="year_race">
+						<option></option>
 						<?php for ($compteur = date("Y");$compteur >= 1950;$compteur--){
 							?> <option><?php echo($compteur); ?> </option>
 						<?php }; ?>
 					</select>
-					<button id="submit_year_race">Validate Year</button>
 					<label for="Race">Choose the race</label>
 					<select id="race" name="race">
 					</select>
 					<button id="selected_race" class="btn btn-primary">Submit</button>
-					<h1 id="error_message"><h1>
+					<h4 id="error_message"><h1>
 			  </div>
 			</div>
 
