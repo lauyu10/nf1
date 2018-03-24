@@ -20,6 +20,7 @@ function display_hello()
 var standing;
 var year;
 var race;
+
 $(document).ready(function(){
 
   console.log("jQuery est prêt !");
@@ -136,7 +137,7 @@ function function_load_standings_f1(){
   $.ajax({
       url : adresse,
       type : 'GET',
-      dataType : 'JSON',
+      dataType : 'jsonp',
       success : function(data){
         //console.log(data);
         $('#titre').empty();
@@ -224,7 +225,7 @@ function function_load_race_f1()
   $.ajax({
     url : adresse,
     type : 'GET',
-    dataType : 'JSON',
+    dataType : 'jsonp',
     success : function(data){
       console.log(data);
       $("#titre").empty();
@@ -275,7 +276,7 @@ function function_load_races_in_season_f1()
   $.ajax({
       url : adresse,
       type : 'GET',
-      dataType : 'JSON',
+      dataType : 'jsonp',
       success : function(data){
         console.log(data);
 
@@ -305,11 +306,12 @@ function function_load_races_in_season_f1()
 
 function function_load_race_nascar()
 {
-  var adresse = "http://api.sportradar.us/nascar-t3/mc/2017/races/schedule.json?api_key=7uerjqcasnrvsejva5ssmu2q";
+  var adresse = "http://ergast.com/api/f1/current/last/results.json";
   $.ajax({
+      headers: {'Access-Control-Allow-Origin': '*'},
       url : adresse,
       type : 'GET',
-      dataType : 'JSON',
+      dataType : 'jsonp',
       success : function(data){
         console.log(data);
       },
@@ -319,7 +321,7 @@ function function_load_race_nascar()
       },
       complete : function(){
         console.log("completed");
-      }
+      },
   });
 }
 
