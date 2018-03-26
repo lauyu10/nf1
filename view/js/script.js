@@ -306,9 +306,8 @@ function function_load_races_in_season_f1()
 
 function function_load_race_nascar()
 {
-  var adresse = "http://ergast.com/api/f1/current/last/results.json";
+  var adresse = "http://api.sportradar.us/nascar-t3/mc/2017/races/schedule.json?api_key=7uerjqcasnrvsejva5ssmu2q";
   $.ajax({
-      headers: {'Access-Control-Allow-Origin': '*'},
       url : adresse,
       type : 'GET',
       dataType : 'jsonp',
