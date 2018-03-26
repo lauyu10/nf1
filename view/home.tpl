@@ -81,7 +81,7 @@
 							{
 								foreach($table_articles as $article)
 								{?>
-									<div class="element">
+									<div class="element" id="article">
 										<a href="index.php?control=routing_page&action=article_page&article=<?php echo($article['nameFile']);?>" class="text-black">
 											<img class="float-image"src="./view/images/<?php echo($article['nameImage']);?>.jpg"/>
 											<h1 class="title-page-menu"> <?php echo($article['title']);?></h1>

@@ -120,7 +120,6 @@ $(document).ready(function(){
       function_load_race_nascar();
     }
   });
-
 });
 
 function function_load_standings_f1(){
@@ -239,7 +238,7 @@ function function_load_race_f1()
         $("#titre").html("Formula 1 season : " + data.MRData.RaceTable.Races[0].season + " / round : " + data.MRData.RaceTable.Races[0].round + " / at : " + data.MRData.RaceTable.Races[0].raceName);
         var lignes_tableau = "";
         lignes_tableau += "<div class='container'>";
-        lignes_tableau += "<table class='table'><thead><tr><th>Position</th><th>NO</th><th>Driver</th><th>Team</th><th>Points</th><th>Lap(s)</th></tr></thead><tbody>";
+        lignes_tableau += "<table class='table'><thead><tr><th>Position</th><th>NO</th><th>Driver</th><th>Team</th><th>Time</th><th>Status</th><th>Points</th><th>Lap(s)</th></tr></thead><tbody>";
         data.MRData.RaceTable.Races[0].Results.forEach(function(element)
         {
           lignes_tableau += "<tr>";
@@ -254,6 +253,16 @@ function function_load_race_f1()
           }
           lignes_tableau += "<th>" + "<a href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
           lignes_tableau += "<th>" + "<a href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
+
+          if(element.status == 'Finished')
+          {
+            lignes_tableau += "<th>" + element.Time.time + "</th>";
+          }
+          else
+          {
+            lignes_tableau += "<th>N/A</th>";
+          }
+          lignes_tableau += "<th>" + element.status + "</th>";
           lignes_tableau += "<th>" + element.points + "</th>";
           lignes_tableau += "<th>" + element.laps + "</th>";
           lignes_tableau += "</tr>";
