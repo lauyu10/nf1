@@ -358,7 +358,7 @@ function pop_up_window(name)
           lignes += "<tr><th>Nationality : </th><td>" + data.MRData.DriverTable.Drivers[0].nationality + "</td></tr>";
           lignes += "<tr><th>Date of birth : </th><td>" + data.MRData.DriverTable.Drivers[0].dateOfBirth + "</td></tr>";
           lignes += "<tr><th>Permanent number : </th><td>" + data.MRData.DriverTable.Drivers[0].permanentNumber + "</td></tr>";
-          lignes += "<tr><th>Link : </th><td><a href='" + data.MRData.DriverTable.Drivers[0].url + "'>Link to wikipedia</a></tr>";
+          lignes += "<tr><th>Link Wikipedia : </th><td>Click on the name</td></tr>";
           lignes += "</table>";
           $('.info').css({'display':'block'});
           $('.info').html(lignes);
@@ -384,7 +384,7 @@ function pop_up_window(name)
           var lignes = "<table>";
           lignes += "<tr><th>Name : </th><td>" + data.MRData.ConstructorTable.Constructors[0].name + "</td></tr>";
           lignes += "<tr><th>Nationality : </th><td>" + data.MRData.ConstructorTable.Constructors[0].nationality + "</td></tr>";
-          lignes += "<tr><th>Link : </th><td><a href='" + data.MRData.ConstructorTable.Constructors[0].url + "'>Link to wikipedia</a></td></tr>";
+          lignes += "<tr><th>Link Wikipedia : </th><td>Click on the name</td></tr>";
           lignes += "</table>";
           $('.info').css({'display':'block'});
           $('.info').html(lignes);

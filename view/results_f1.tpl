@@ -91,7 +91,8 @@
 					<h4 id="error_message"><h1>
 			  </div>
 			</div>
-
+			<div class="info">
+			</div>
 			<div class="container" id="tableau">
 			</div>
 

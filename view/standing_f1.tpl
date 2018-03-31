@@ -92,7 +92,8 @@
 					<button id="selected_year" class="btn btn-primary">Submit</button>
 			  </div>
 			</div>
-
+			<div class="info">
+			</div>
 			<div class="container" id="tableau">
 			</div>
 
