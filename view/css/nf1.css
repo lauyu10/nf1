@@ -189,3 +189,12 @@ input:checked + .slider:before {
 {
 	color: #ffaaaa;
 }
+
+.info
+{
+	display:none;
+	position: fixed;
+  right: 0;
+  width: auto;
+  border: 3px solid #73AD21;
+}

@@ -120,6 +120,10 @@ $(document).ready(function(){
       function_load_race_nascar();
     }
   });
+
+  $('a#driver').hover(function(){
+    console.log("bonjour");
+  });
 });
 
 function function_load_standings_f1(){
@@ -165,8 +169,8 @@ function function_load_standings_f1(){
               else {
                 lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
               }
-              lignes_tableau += "<th>" + "<a href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
-              lignes_tableau += "<th>" + "<a href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.wins + "</th>";
               lignes_tableau += "<th>" + element.points + "</th>";
               lignes_tableau += "</tr>";
@@ -187,7 +191,7 @@ function function_load_standings_f1(){
             data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.forEach(function(element){
               lignes_tableau += "<tr>";
               lignes_tableau += "<th>" + element.positionText + "</th>";
-              lignes_tableau += "<th>" + "<a href='"+ element.Constructor.url +"'>" + element.Constructor.name + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" + element.Constructor.name + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.Constructor.nationality + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.wins + "</th>";
               lignes_tableau += "<th>" + element.points + "</th>";
@@ -251,8 +255,9 @@ function function_load_race_f1()
           {
             lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
           }
-          lignes_tableau += "<th>" + "<a href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
-          lignes_tableau += "<th>" + "<a href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
+
+          lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+          lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
 
           if(element.status == 'Finished')
           {
@@ -333,7 +338,65 @@ function function_load_race_nascar()
   });
 }
 
-function function_load_races_in_season_nascar()
+function pop_up_window(name)
 {
+  console.log($(name).attr('id'));
+  console.log($(name).attr('class'));
+
+  var adresse;
+  if($(name).attr('class') == "driver")
+  {
+    adresse = "http://ergast.com/api/f1/drivers/"+$(name).attr('id')+".json";
+    $.ajax({
+        url : adresse,
+        type : 'GET',
+        dataType : 'jsonp',
+        success : function(data){
+          console.log(data);
+          var lignes = "<table>";
+          lignes += "<tr><th>Name : </th><td>" + data.MRData.DriverTable.Drivers[0].givenName + " " + data.MRData.DriverTable.Drivers[0].familyName + "</td></th>";
+          lignes += "<tr><th>Nationality : </th><td>" + data.MRData.DriverTable.Drivers[0].nationality + "</td></tr>";
+          lignes += "<tr><th>Date of birth : </th><td>" + data.MRData.DriverTable.Drivers[0].dateOfBirth + "</td></tr>";
+          lignes += "<tr><th>Permanent number : </th><td>" + data.MRData.DriverTable.Drivers[0].permanentNumber + "</td></tr>";
+          lignes += "<tr><th>Link : </th><td><a href='" + data.MRData.DriverTable.Drivers[0].url + "'>Link to wikipedia</a></tr>";
+          lignes += "</table>";
+          $('.info').css({'display':'block'});
+          $('.info').html(lignes);
+        },
+        error : function(error){
+          console.log("error");
+          console.log(error);
+        },
+        complete : function(){
+          console.log("completed");
+        },
+    });
+  }
+  else
+  {
+    adresse = "http://ergast.com/api/f1/constructors/"+$(name).attr('id')+".json";
+    $.ajax({
+        url : adresse,
+        type : 'GET',
+        dataType : 'jsonp',
+        success : function(data){
+          console.log(data);
+          var lignes = "<table>";
+          lignes += "<tr><th>Name : </th><td>" + data.MRData.ConstructorTable.Constructors[0].name + "</td></tr>";
+          lignes += "<tr><th>Nationality : </th><td>" + data.MRData.ConstructorTable.Constructors[0].nationality + "</td></tr>";
+          lignes += "<tr><th>Link : </th><td><a href='" + data.MRData.ConstructorTable.Constructors[0].url + "'>Link to wikipedia</a></td></tr>";
+          lignes += "</table>";
+          $('.info').css({'display':'block'});
+          $('.info').html(lignes);
+        },
+        error : function(error){
+          console.log("error");
+          console.log(error);
+        },
+        complete : function(){
+          console.log("completed");
+        },
+    });
+  }
 
 }

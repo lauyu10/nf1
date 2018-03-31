@@ -64,38 +64,38 @@
 				</div>
 			</div>
 		</header>
-		<script type="text/javascript">function_load_race_nascar()</script>
+		<script type="text/javascript">function_load_race_f1();</script>
 		<main role="main">
 
 			<section class="jumbotron text-center">
 				<div class="container">
+					<h1 class="jumbotron-heading">TEST CRASH PAGE</h1>
 					<h1 class="jumbotron-heading" id="titre"></h1>
 				</div>
 			</section>
-			<button id="select_race_nascar" class="btn btn-primary">Choose a Nascar Cup Series Race</button>
+			<button id="select_race" class="btn btn-primary">Choose a F1 Race</button>
 
-			<div id="form_nascar_selection" title="Select year of a NCS season">
+			<div id="form_f1_selection" title="Select year of a F1 season">
 			  <div id="form_content">
 					<span class="close">&times;</span>
 					<label for="Year">Choose the Year of one season</label>
-		      <select id="year_race_nascar" name="year_race">
+		      <select id="year_race" name="year_race">
 						<option></option>
-						<?php for ($compteur = date("Y");$compteur >= 2012;$compteur--){
+						<?php for ($compteur = date("Y");$compteur >= 1950;$compteur--){
 							?> <option><?php echo($compteur); ?> </option>
 						<?php }; ?>
 					</select>
-					<button id="submit_year_race_nascar">Validate Year</button>
 					<label for="Race">Choose the race</label>
-					<select id="race_nascar" name="race">
+					<select id="race" name="race">
 					</select>
-					<button id="selected_race_nascar" class="btn btn-primary">Submit</button>
-					<h1 id="error_message"><h1>
+					<button id="selected_race" class="btn btn-primary">Submit</button>
+					<h4 id="error_message"><h1>
 			  </div>
 			</div>
-
+			<div class="info">
+			</div>
 			<div class="container" id="tableau">
 			</div>
-
 		</main>
 
 		<footer class="text-muted">
@@ -106,5 +106,4 @@
 			</div>
 		</footer>
 	</body>
-
 </html>
