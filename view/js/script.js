@@ -398,5 +398,9 @@ function pop_up_window(name)
         },
     });
   }
+}
 
+function verify()
+{
+  console.log("coucou");
 }

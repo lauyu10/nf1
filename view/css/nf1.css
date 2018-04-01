@@ -199,3 +199,10 @@ input:checked + .slider:before {
   width: auto;
   border: 3px solid #000000;
 }
+
+.form_contact
+{
+	width:75%;
+	margin-left: auto;
+  margin-right: auto;
+}

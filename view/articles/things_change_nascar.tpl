@@ -65,7 +65,7 @@
 
 			<div class="container">
 
-				<h1 class="article">5 things that Nascar should change</h1>
+				<h1 class="title-page-article">5 things that Nascar should change</h1>
 				<p class="card-text">
 					Before I give my point of view, I have to precise that these 5 reasons come from me, and it is just my opinion. You can be agreed with me or disagreed. </br>
 				</p>

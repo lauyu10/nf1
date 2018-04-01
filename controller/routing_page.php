@@ -193,4 +193,60 @@ function test_crash()
 {
 	require('view/test_crash.tpl');
 }
+
+function test_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+
+function send_mail()
+{
+	if(empty($_POST['first_name']) || empty($_POST["last_name"]) || empty($_POST["mail"]) || empty($_POST["text"]))
+	{
+		if (empty($_POST["first_name"])) {
+			$first_name_error = "First Name is required";
+		}
+		else {
+			$first_name_error = "OK";
+		}
+		if (empty($_POST["last_name"])) {
+			$last_name_error = "Last Name is required";
+		}
+		else {
+			$last_name_error = "OK";
+		}
+		if (empty($_POST["mail"])) {
+			$mail_error = "Mail is required";
+		}
+		else {
+			$mail_error = "OK";
+		}
+		if (empty($_POST["text"])) {
+			$text_error = "Mail is required";
+		}
+		else {
+			$text_error = "OK";
+		}
+		$message = "Message not sended";
+		require('view/test_crash.tpl');
+	}
+	else
+	{
+		$first_name = test_input($_POST["first_name"]);
+		$last_name = test_input($_POST["last_name"]);
+		$mail = test_input($_POST["mail"]);
+		$text = test_input($_POST["text"]);
+
+		require('controller/send_message.php');
+		send_message_verified($first_name,$last_name,$mail,$text);
+
+		$first_name_error = $last_name_error = $mail_error = $text_error = "";
+		$message = "Message sended";
+		require('view/test_crash.tpl');
+	}
+}
+
+
 ?>

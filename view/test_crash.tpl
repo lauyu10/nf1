@@ -70,8 +70,48 @@
 			<section class="jumbotron text-center">
 				<div class="container">
 					<h1 class="jumbotron-heading">TEST CRASH PAGE</h1>
+					<h1>Contact NF1</h1>
 				</div>
 			</section>
+			<?php
+			if(isset($first_name_error) && isset($last_name_error) && isset($mail_error) && isset($text_error) && isset($message))
+			{
+	
+			}
+			else
+			{
+				$first_name_error = $last_name_error = $mail_error = $text_error = $message = "";
+			}
+			?>
+			<form action="index.php?control=routing_page&action=send_mail" class="form_contact" method="post">
+				<h1>Fill the blanks</h1>
+			  <div class="row">
+			    <div class="col">
+						<label for="exampleFormControlTextarea1">First Name</label>
+			      <input type="text" class="form-control" placeholder="First name" name="first_name">
+						<span id="error_message"><?php echo $first_name_error;?></span>
+			    </div>
+			    <div class="col">
+						<label for="exampleFormControlTextarea1">Last Name</label>
+			      <input type="text" class="form-control" placeholder="Last name" name="last_name">
+						<span id="error_message"><?php echo $last_name_error;?></span>
+			    </div>
+					<div class="col">
+						<label for="exampleFormControlTextarea1">E-Mail</label>
+			      <input type="text" class="form-control" placeholder="E-Mail" name="mail">
+						<span id="error_message"><?php echo $mail_error;?></span>
+			    </div>
+			  </div>
+
+				<div class="form-group">
+			    <label for="exampleFormControlTextarea1">Text</label>
+			    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
+					<span id="error_message"><?php echo $first_name_error;?></span>
+			  </div>
+				<button type="submit" class="btn btn-primary">Send the text</button>
+				<h4 id="error_message"><?php echo $message; ?></h4>
+			</form>
+
 
 		</main>
 
