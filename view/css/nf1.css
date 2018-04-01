@@ -78,7 +78,7 @@
 .float-image-center
 {
 	float:none;
-	width: 50%;
+	width: 25%;
   height: auto;
 }
 
@@ -194,7 +194,8 @@ input:checked + .slider:before {
 {
 	display:none;
 	position: fixed;
+	background-color:#FFD700;
   right: 0;
   width: auto;
-  border: 3px solid #73AD21;
+  border: 3px solid #000000;
 }
