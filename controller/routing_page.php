@@ -224,11 +224,12 @@ function send_mail()
 			$mail_error = "OK";
 		}
 		if (empty($_POST["text"])) {
-			$text_error = "Mail is required";
+			$text_error = "Text is required";
 		}
 		else {
 			$text_error = "OK";
 		}
+
 		$message = "Message not sended";
 		require('view/test_crash.tpl');
 	}
