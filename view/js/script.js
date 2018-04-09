@@ -165,8 +165,8 @@ function function_load_standings_f1(){
               else {
                 lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
               }
-              lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
-              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructors[0].constructorId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Constructors[0].constructorId + ")' href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructors[0].constructorId + "' href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.wins + "</th>";
               lignes_tableau += "<th>" + element.points + "</th>";
               lignes_tableau += "</tr>";
@@ -187,7 +187,7 @@ function function_load_standings_f1(){
             data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.forEach(function(element){
               lignes_tableau += "<tr>";
               lignes_tableau += "<th>" + element.positionText + "</th>";
-              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" + element.Constructor.name + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' href='"+ element.Constructor.url +"'>" + element.Constructor.name + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.Constructor.nationality + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.wins + "</th>";
               lignes_tableau += "<th>" + element.points + "</th>";
@@ -197,8 +197,25 @@ function function_load_standings_f1(){
             lignes_tableau += "</table>";
             lignes_tableau += "</div>";
             $('#tableau').html(lignes_tableau);
-
           }
+
+          $('.driver').mouseover(function(event){
+            pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+          });
+
+          $('.constructor').mouseover(function(event){
+            pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+          });
+
+          $('.driver').mouseout(function(){
+            $('.info').css({'display':'none'});
+            $('.info').empty();
+          });
+
+          $('.constructor').mouseout(function(){
+            $('.info').css({'display':'none'});
+            $('.info').empty();
+          });
         }
       },
       error : function(error){
@@ -252,8 +269,8 @@ function function_load_race_f1()
             lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
           }
 
-          lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
-          lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
+          lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+          lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
 
           if(element.status == 'Finished')
           {
@@ -270,6 +287,24 @@ function function_load_race_f1()
         });
       }
       $("#tableau").html(lignes_tableau);
+
+      $('.driver').mouseover(function(event){
+        pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+      });
+
+      $('.constructor').mouseover(function(event){
+        pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+      });
+
+      $('.driver').mouseout(function(){
+        $('.info').css({'display':'none'});
+        $('.info').empty();
+      });
+
+      $('.constructor').mouseout(function(){
+        $('.info').css({'display':'none'});
+        $('.info').empty();
+      });
     },
     error : function(error){
       console.log(error);
@@ -334,15 +369,14 @@ function function_load_race_nascar()
   });
 }
 
-function pop_up_window(name)
+function pop_up_window(name,type)
 {
-  console.log($(name).attr('id'));
-  console.log($(name).attr('class'));
+  $('.info').empty();
 
   var adresse;
-  if($(name).attr('class') == "driver")
+  if(type == "driver")
   {
-    adresse = "http://ergast.com/api/f1/drivers/"+$(name).attr('id')+".json";
+    adresse = "http://ergast.com/api/f1/drivers/"+ name +".json";
     $.ajax({
         url : adresse,
         type : 'GET',
@@ -370,7 +404,7 @@ function pop_up_window(name)
   }
   else
   {
-    adresse = "http://ergast.com/api/f1/constructors/"+$(name).attr('id')+".json";
+    adresse = "http://ergast.com/api/f1/constructors/"+ name +".json";
     $.ajax({
         url : adresse,
         type : 'GET',
@@ -394,15 +428,6 @@ function pop_up_window(name)
         },
     });
   }
-}
-
-$('a#driver').hover(function(){
-  console.log("bonjour");
-});
-
-function close_window()
-{
-  $('.info').css({'display':'none'});
 }
 
 function verify()
