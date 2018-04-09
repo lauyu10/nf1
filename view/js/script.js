@@ -120,10 +120,6 @@ $(document).ready(function(){
       function_load_race_nascar();
     }
   });
-
-  $('a#driver').hover(function(){
-    console.log("bonjour");
-  });
 });
 
 function function_load_standings_f1(){
@@ -169,8 +165,8 @@ function function_load_standings_f1(){
               else {
                 lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
               }
-              lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
-              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructors[0].constructorId + "' onmouseover='pop_up_window(" + element.Constructors[0].constructorId + ")' href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructors[0].constructorId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Constructors[0].constructorId + ")' href='"+ element.Constructors[0].url +"'>" + element.Constructors[0].name + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.wins + "</th>";
               lignes_tableau += "<th>" + element.points + "</th>";
               lignes_tableau += "</tr>";
@@ -191,7 +187,7 @@ function function_load_standings_f1(){
             data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.forEach(function(element){
               lignes_tableau += "<tr>";
               lignes_tableau += "<th>" + element.positionText + "</th>";
-              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" + element.Constructor.name + "</a>" + "</th>";
+              lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" + element.Constructor.name + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.Constructor.nationality + "</a>" + "</th>";
               lignes_tableau += "<th>" + element.wins + "</th>";
               lignes_tableau += "<th>" + element.points + "</th>";
@@ -256,8 +252,8 @@ function function_load_race_f1()
             lignes_tableau += "<th>" + element.Driver.permanentNumber + "</th>";
           }
 
-          lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
-          lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
+          lignes_tableau += "<th>" + "<a class='driver' id='" + element.Driver.driverId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Driver.driverId + ")' href='"+ element.Driver.url +"'>" + element.Driver.givenName + " " + element.Driver.familyName + "</a>" + "</th>";
+          lignes_tableau += "<th>" + "<a class='constructor' id='" + element.Constructor.constructorId + "' onmouseout='close_window()' onmouseover='pop_up_window(" + element.Constructor.constructorId + ")' href='"+ element.Constructor.url +"'>" +element.Constructor.name + "</a>" +"</th>";
 
           if(element.status == 'Finished')
           {
@@ -398,6 +394,15 @@ function pop_up_window(name)
         },
     });
   }
+}
+
+$('a#driver').hover(function(){
+  console.log("bonjour");
+});
+
+function close_window()
+{
+  $('.info').css({'display':'none'});
 }
 
 function verify()
