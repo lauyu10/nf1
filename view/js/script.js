@@ -200,11 +200,11 @@ function function_load_standings_f1(){
           }
 
           $('.driver').mouseover(function(event){
-            pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+            pop_up_window(event);
           });
 
           $('.constructor').mouseover(function(event){
-            pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+            pop_up_window(event);
           });
 
           $('.driver').mouseout(function(){
@@ -289,11 +289,12 @@ function function_load_race_f1()
       $("#tableau").html(lignes_tableau);
 
       $('.driver').mouseover(function(event){
-        pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+        pop_up_window(event);
+
       });
 
       $('.constructor').mouseover(function(event){
-        pop_up_window($(event.target).attr('id'),$(event.target).attr('class'));
+        pop_up_window(event);
       });
 
       $('.driver').mouseout(function(){
@@ -369,14 +370,15 @@ function function_load_race_nascar()
   });
 }
 
-function pop_up_window(name,type)
+function pop_up_window(event)
 {
+  console.log(event.clientY);
   $('.info').empty();
 
   var adresse;
-  if(type == "driver")
+  if($(event.target).attr('class') == "driver")
   {
-    adresse = "http://ergast.com/api/f1/drivers/"+ name +".json";
+    adresse = "http://ergast.com/api/f1/drivers/"+ $(event.target).attr('id') +".json";
     $.ajax({
         url : adresse,
         type : 'GET',
@@ -390,7 +392,7 @@ function pop_up_window(name,type)
           lignes += "<tr><th>Permanent number : </th><td>" + data.MRData.DriverTable.Drivers[0].permanentNumber + "</td></tr>";
           lignes += "<tr><th>Link Wikipedia : </th><td>Click on the name</td></tr>";
           lignes += "</table>";
-          $('.info').css({'display':'block'});
+          $('.info').css({'display':'block','top':""+event.clientY+"px"});
           $('.info').html(lignes);
         },
         error : function(error){
@@ -404,7 +406,7 @@ function pop_up_window(name,type)
   }
   else
   {
-    adresse = "http://ergast.com/api/f1/constructors/"+ name +".json";
+    adresse = "http://ergast.com/api/f1/constructors/"+ $(event.target).attr('id') +".json";
     $.ajax({
         url : adresse,
         type : 'GET',
