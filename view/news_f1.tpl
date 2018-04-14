@@ -41,6 +41,7 @@
 							</ul>
 							<h4 class="text-white"><a href="index.php?control=routing_page&action=what_if" class="text-white">What If...</a></h4>
 							<h4 class="text-white"><a href="index.php?control=routing_page&action=videos" class="text-white">Videos</a></h4>
+							<h4 class="text-white"><a href="index.php?control=routing_page&action=contact_page" class="text-white">Contact NF1</a></h4>
 						</div>
 					</div>
 				</div>

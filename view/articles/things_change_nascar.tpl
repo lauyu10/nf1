@@ -26,21 +26,22 @@
 							<p class="text-muted">NF1 is a news website about the Nascar Cup Series and Formula 1 at the moment</p>
 						</div>
 						<div class="col-sm-4 py-4">
-							<h4 class="text-white"><form action="index.php?control=routing_page&action=home_page" method="post"><button class="button_menu">Home NF1</button></form></h4>
+							<h4 class="text-white"><a href="index.php?control=routing_page&action=home_page" class="text-white">Home NF1</a></h4>
 							<h4 class="text-white">Nascar Cup Series</h4>
 							<ul class="list-unstyled">
-								<li><form action="index.php?control=routing_page&action=news_nascar" method="post"><button class="button_menu">News</button></form></li>
-								<li><form action="index.php?control=routing_page&action=standing_nascar" method="post"><button class="button_menu">Standing</button></form></li>
-								<li><form action="index.php?control=routing_page&action=results_nascar" method="post"><button class="button_menu">Results</button></form></li>
+								<li><a href="index.php?control=routing_page&action=news_nascar" class="text-white">News</a></li>
+								<li><a href="index.php?control=routing_page&action=standing_nascar" class="text-white">Standing</a></li>
+								<li><a href="index.php?control=routing_page&action=results_nascar" class="text-white">Results</a></li>
 							</ul>
 							<h4 class="text-white">F1</h4>
 							<ul class="list-unstyled">
-								<li><form action="index.php?control=routing_page&action=news_f1" method="post"><button class="button_menu">News</button></form></li>
-								<li><form action="index.php?control=routing_page&action=standing_f1" method="post"><button class="button_menu">Standing</button></form></li>
-								<li><form action="index.php?control=routing_page&action=results_f1" method="post"><button class="button_menu">Results</button></form></li>
+								<li><a href="index.php?control=routing_page&action=news_f1" class="text-white">News</a></li>
+								<li><a href="index.php?control=routing_page&action=standing_f1" class="text-white">Standing</a></li>
+								<li><a href="index.php?control=routing_page&action=results_f1" class="text-white">Results</a></li>
 							</ul>
-							<h4 class="text-white"><form action="index.php?control=routing_page&action=what_if" method="post"><button class="button_menu">What If...</button></form></h4>
-							<h4 class="text-white"><form action="index.php?control=routing_page&action=videos" method="post"><button class="button_menu">Videos</button></form></h4>
+							<h4 class="text-white"><a href="index.php?control=routing_page&action=what_if" class="text-white">What If...</a></h4>
+							<h4 class="text-white"><a href="index.php?control=routing_page&action=videos" class="text-white">Videos</a></h4>
+							<h4 class="text-white"><a href="index.php?control=routing_page&action=contact_page" class="text-white">Contact NF1</a></h4>
 						</div>
 					</div>
 				</div>

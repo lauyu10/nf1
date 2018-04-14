@@ -194,6 +194,11 @@ function test_crash()
 	require('view/test_crash.tpl');
 }
 
+function contact_page()
+{
+	require('view/contact.tpl');
+}
+
 function test_input($data) {
 	$data = trim($data);
 	$data = stripslashes($data);
