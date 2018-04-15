@@ -157,6 +157,12 @@ the function receives from the index.php the file's name of the article
 */
 function article_page($name)
 {
+	if(!function_exists('get_articles'))
+	{
+		require('./controller/loading_articles.php');
+	}
+
+	$table_comments = get_comments_article($name);
 	require('view/articles/'.$name.'.tpl');
 }
 
@@ -254,5 +260,22 @@ function send_mail()
 	}
 }
 
+function addcomment()
+{
+	if ($_POST['name'] == "" || $_POST['commentaire'] == "")
+	{
+		$_SESSION['error_message'] = "missing entry";
+		article_page($_SESSION['article']);
+	}
+	else
+	{
+		$_SESSION['error_message'] = "";
+
+		require('./controller/loading_articles.php');
+
+		add_comments($_POST['name'],$_POST['commentaire'],$_SESSION['article']);
+		article_page($_SESSION['article']);
+	}
+}
 
 ?>

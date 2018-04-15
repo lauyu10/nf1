@@ -73,14 +73,14 @@
 				</div>
 			</section>
 			<?php
-			if(isset($first_name_error) && isset($last_name_error) && isset($mail_error) && isset($text_error) && isset($message))
-			{
+  			if(isset($first_name_error) && isset($last_name_error) && isset($mail_error) && isset($text_error) && isset($message))
+  			{
 
-			}
-			else
-			{
-				$first_name_error = $last_name_error = $mail_error = $text_error = $message = "";
-			}
+  			}
+  			else
+  			{
+  				$first_name_error = $last_name_error = $mail_error = $text_error = $message = "";
+  			}
 			?>
 			<form action="index.php?control=routing_page&action=send_mail" class="form_contact" method="post">
 				<h1>Fill the blanks</h1>

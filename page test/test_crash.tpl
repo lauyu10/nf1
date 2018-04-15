@@ -91,34 +91,50 @@
 			<div class="container" id="sept_cinq">
 				<div class="widget-area no-padding blank">
 					<div class="status-upload">
+
 						<form action="index.php?control=routing_page&action=addcomment" method="post">
 							<input id="no_border" type="text" name="name" placeholder="name ?"></input>
-							<textarea name="commentaire" placeholder="What are you doing right now?"></textarea>
+							<textarea name="commentaire" placeholder="your comments here"></textarea>
+							<?php
+								if(isset($error_message))
+								{?>
+									<span id="error_message"><?php echo($_SESSION['error_message']);?></span><?php
+								}
+							?>
 							<button type="submit" class="btn btn-success green" id="marge"> Commenter</button>
 						</form>
 					</div><!-- Status Upload  -->
 				</div><!-- Widget Area -->
 			</div>
 
-			<div class="container" id="marge">
-				<div class="card" id="sept_cinq">
-				  <div class="card-block">
-						<h4 class="card-title">Card title</h4>
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+			<?php
+				if($table_comments != null)
+				{
+					foreach($table_comments as $comment)
+					{?>
+						<div class="container" id="marge">
+							<div class="card" id="sept_cinq">
+							  <div class="card-block">
+									<h4 class="card-title"><?php echo($comment['name']);?></h4>
+							    <p class="card-text"><?php echo($comment['comment']);?></p>
+									<h6 class="card-subtitle mb-2 text-muted"><?php echo($comment['date']);?></h6>
+								</div>
+							</div>
+						</div>
+					<?php
+					}
+				}
+				else
+				{?>
+					<div class="container" id="marge">
+						<div class="card" id="sept_cinq">
+							<div class="card-block">
+								<h4 class="card-title">Be the first to comment ?</h4>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-
-			<div class="container" id="marge">
-				<div class="card" id="sept_cinq">
-				  <div class="card-block">
-						<h4 class="card-title">Card title</h4>
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					</div>
-				</div>
-			</div>
+				<?php
+			}?>
 
 		</main>
 

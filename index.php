@@ -30,6 +30,7 @@ condition in order to find out the good function in a controller
 if ($article != '')
 {
   require ('./controller/' .  $control . '.php');
+  $_SESSION['article'] = $article;
   $action($article);
 }
 else

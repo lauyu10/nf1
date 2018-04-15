@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 19 Février 2018 à 10:15
+-- Généré le :  Dim 15 Avril 2018 à 13:23
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -139,6 +139,20 @@ INSERT INTO `circuit` (`idCircuit`, `nameCircuit`, `place`, `idDiscipline`, `idS
 (134, 'AAA Texas 500', 'Texas Motor Speedway', 1, 1),
 (135, 'Cam-Am 500', 'Phoenix International Raceway', 1, 1),
 (136, 'Ford EcoBoost 400', 'Homestead-Miami Speedway', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comments`
+--
+
+CREATE TABLE `comments` (
+  `idComment` int(11) NOT NULL,
+  `idArticle` int(11) NOT NULL,
+  `comment` varchar(1000) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -461,9 +475,11 @@ CREATE TABLE `videos` (
   `title` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Contenu de la table `videos`
 --
+
 INSERT INTO `videos` (`idVideos`, `title`, `link`) VALUES
 (1, 'NF1 Podcast #1', 'https://www.youtube.com/embed/K7NsMzfDsGA');
 
@@ -491,6 +507,13 @@ ALTER TABLE `circuit`
   ADD PRIMARY KEY (`idCircuit`,`idSeason`),
   ADD KEY `Fk_Circuit_Discipline` (`idDiscipline`),
   ADD KEY `Fk_Circuit_Season` (`idSeason`);
+
+--
+-- Index pour la table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`idComment`),
+  ADD KEY `Fk_Comments_Articles` (`idArticle`);
 
 --
 -- Index pour la table `discipline`
@@ -530,6 +553,9 @@ ALTER TABLE `team`
   ADD PRIMARY KEY (`idTeam`),
   ADD KEY `Fk_Team_Discipline` (`idDiscipline`);
 
+--
+-- Index pour la table `videos`
+--
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`idVideos`);
 
@@ -552,6 +578,11 @@ ALTER TABLE `category`
 --
 ALTER TABLE `circuit`
   MODIFY `idCircuit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+--
+-- AUTO_INCREMENT pour la table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `pilot`
 --
