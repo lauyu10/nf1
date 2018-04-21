@@ -374,7 +374,7 @@ function pop_up_window(event)
 {
   console.log(event.clientY);
   $('.info').empty();
-
+  var y = event.clientY - 70;
   var adresse;
   if($(event.target).attr('class') == "driver")
   {
@@ -392,7 +392,7 @@ function pop_up_window(event)
           lignes += "<tr><th>Permanent number : </th><td>" + data.MRData.DriverTable.Drivers[0].permanentNumber + "</td></tr>";
           lignes += "<tr><th>Link Wikipedia : </th><td>Click on the name</td></tr>";
           lignes += "</table>";
-          $('.info').css({'display':'block','top':""+event.clientY+"px"});
+          $('.info').css({'display':'block','top':""+y+"px"});
           $('.info').html(lignes);
         },
         error : function(error){
