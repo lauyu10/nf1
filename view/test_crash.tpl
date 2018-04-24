@@ -67,59 +67,10 @@
 
 		<main role="main">
 			<section class="jumbotron text-center">
-				<div class="container">
+				<div class="container" id="test_nascar">
 					<img class="float-image-center" src="./view/images/f1_2017_driver_standing_race_18.jpg" alt="Schedule F1 with Nascar's points"/>
 				</div>
 			</section>
-
-			<div class="container">
-				<h1 class="title-page-article">What if we change points system in F1 to Nascar's points system. What happens in the drivers' standing ?</h1>
-				<p class="article">
-					For this season 2017, Lewis Hamilton is the champion of F1. It remains 2 grand prix before the end of the season.
-					But, if we change the f1 scoring system into a NASCAR scoring system. Each place gives 1 point. Example : 1st place gives 20 pts,
-					2nd place gives 19pts, 3rd : 18pts, etc..., 20th : 1pt. Even, if do not take part of the race. Drivers just need to be here on the grid.
-					</br>
-					On the picture, you can see that Lewis Hamilton is ahead of his teammate Valtteri Bottas with 22pts.
-					As you can see, If we use this fantasy scoring system, the season is not over we do not know, who is going to win the driver championship.
-					</br>
-					On the left, the fantasy scoring system. On the right, the real scoring system in f1.
-					</br>
-					<img src="./view/images/compare.png" alt="Differents scoring system. On the left, the fantasy scoring system. On the right, the real scoring system in f1."/>
-				</p>
-			</div>
-
-			<div class="container" id="sept_cinq">
-				<div class="widget-area no-padding blank">
-					<div class="status-upload">
-						<form action="index.php?control=routing_page&action=addcomment" method="post">
-							<input id="no_border" type="text" name="name" placeholder="name ?"></input>
-							<textarea name="commentaire" placeholder="What are you doing right now?"></textarea>
-							<button type="submit" class="btn btn-success green" id="marge"> Commenter</button>
-						</form>
-					</div><!-- Status Upload  -->
-				</div><!-- Widget Area -->
-			</div>
-
-			<div class="container" id="marge">
-				<div class="card" id="sept_cinq">
-				  <div class="card-block">
-						<h4 class="card-title">Card title</h4>
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="container" id="marge">
-				<div class="card" id="sept_cinq">
-				  <div class="card-block">
-						<h4 class="card-title">Card title</h4>
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					</div>
-				</div>
-			</div>
-
 		</main>
 
 		<footer class="text-muted">

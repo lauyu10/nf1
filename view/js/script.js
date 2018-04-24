@@ -24,6 +24,7 @@ var race;
 $(document).ready(function(){
 
   console.log("jQuery est prêt !");
+  function_load_race_nascar();
 
   $('a.text-white').hover(function(){
     console.log("je suis sur un lien");
@@ -356,7 +357,7 @@ function function_load_race_nascar()
   $.ajax({
       url : adresse,
       type : 'GET',
-      dataType : 'jsonp',
+      dataType : 'json',
       success : function(data){
         console.log(data);
       },
