@@ -68,4 +68,15 @@ function add_comments_db($name,$idArticle,$comment)
   $request = sprintf($sql,$idArticle,$comment,$name);
   $result = mysqli_query($link,$request) or dir (utf8_encode("request error"));
 }
+
+function get_article_name_db($idArticle)
+{
+  require('./model/connect_db.php');
+  $sql = "select a.nameFile from articles a where a.idArticle = '%d'";
+  $request = sprintf($sql,$idArticle);
+  $result = mysqli_query($link,$request) or die (utf8_encode("request error") . $request);
+
+  $nameArticle = mysqli_fetch_assoc($result);
+  return $nameArticle['nameFile'];
+}
 ?>

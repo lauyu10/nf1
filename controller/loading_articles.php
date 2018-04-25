@@ -22,4 +22,18 @@ function get_comments_article($name)
   $table_comments = get_comments_article_db($idArticle);
   return $table_comments;
 }
+
+function get_previous_article($name)
+{
+  $idArticle = get_id_article_db($name);
+  $previous_article = get_article_name_db($idArticle - 1);
+  return $previous_article;
+}
+
+function get_next_article($name)
+{
+  $idArticle = get_id_article_db($name);
+  $next_article = get_article_name_db($idArticle + 1);
+  return $next_article;
+}
 ?>

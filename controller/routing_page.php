@@ -161,7 +161,13 @@ function article_page($name)
 	{
 		require('./controller/loading_articles.php');
 	}
-
+	$previous_article = get_previous_article($name);
+	$next_article = get_next_article($name);
+/*
+	echo(isset($previous_article) == 1);
+	echo("/");
+	echo(isset($next_article) == 0);
+*/
 	$table_comments = get_comments_article($name);
 	require('view/articles/'.$name.'.tpl');
 }

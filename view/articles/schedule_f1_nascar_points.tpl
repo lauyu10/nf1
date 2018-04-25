@@ -82,6 +82,36 @@
 
 			</div>
 
+			<div class="container">
+				<h5>Want to see more articles, click on the links below</h5>
+				<p class="float-left">
+					<?php
+					if(isset($previous_article))
+					{?>
+						<a href="index.php?control=routing_page&action=article_page&article=<?php echo($previous_article);?>" class="text-black">Previous Article</a>
+					<?php
+					}
+					else
+					{?>
+						<label>No previous article</label>
+					<?php
+					}?>
+				</p>
+				<p class="float-right">
+					<?php
+					if(isset($next_article))
+					{?>
+						<a href="index.php?control=routing_page&action=article_page&article=<?php echo($next_article);?>" class="text-black">Next Article</a>
+					<?php
+					}
+					else
+					{?>
+						<label>No Next article</label>
+					<?php
+					}?>
+        </p>
+      </div>
+
 			<div class="container" id="sept_cinq">
 				<div class="widget-area no-padding blank">
 					<div class="status-upload">
@@ -129,11 +159,10 @@
 					</div>
 				<?php
 			}?>
-
 		</main>
 
     <footer class="text-muted">
-      <div class="container">
+			<div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
