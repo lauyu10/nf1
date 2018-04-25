@@ -242,7 +242,7 @@ function send_mail()
 		}
 
 		$message = "Message not sended";
-		require('view/test_crash.tpl');
+		contact_page();
 	}
 	else
 	{
@@ -256,7 +256,7 @@ function send_mail()
 
 		$first_name_error = $last_name_error = $mail_error = $text_error = "";
 		$message = "Message sended";
-		require('view/test_crash.tpl');
+		contact_page();
 	}
 }
 
