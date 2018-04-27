@@ -1,13 +1,17 @@
 <?php
-/*
-This controller is used for routing to the good view
-*/
 
-/*
-this function is for the home page of the website.
-the function asks to the controller loading articles, if there are articles in all category in the database.
-the table ($table_articles) will be used in the view home.tpl
-*/
+/**
+ * This controller is used for routing to the good view.
+ * this controller is the link between view and controller
+ * @author Laurent Yu
+ *
+ */
+
+/**
+ * this function is for the home page of the website.
+ * the function asks to the controller loading articles, if there are articles in all category in the database.
+ * the table ($table_articles) will be used in the view home.tpl
+ */
 function home_page()
 {
 	require('controller/loading_articles.php');
@@ -15,11 +19,11 @@ function home_page()
 	require('view/home.tpl');
 }
 
-/*
-this function is for the what if page.
-the function asks to the controller loading articles, if there are articles in the category what if in the database.
-the table ($table_articles) will be used in the view what_if.tpl
-*/
+/**
+ * this function is for the what if page.
+ * the function asks to the controller loading articles, if there are articles in the category what if in the database.
+ * the table ($table_articles) will be used in the view what_if.tpl
+ */
 function what_if()
 {
 	require('controller/loading_articles.php');
@@ -27,11 +31,11 @@ function what_if()
 	require('view/what_if.tpl');
 }
 
-/*
-this function is for the videos page. at the moment the function just redirect to the video page.
-However, the function will ask to the controller loading video, if there are videos in the database.
-a table will be used in the view videos.tpl
-*/
+/**
+ * this function is for the videos page. at the moment the function just redirect to the video page.
+ * However, the function will ask to the controller loading video, if there are videos in the database.
+ * a table will be used in the view videos.tpl
+ */
 function videos()
 {
 	require('controller/loading_videos.php');
@@ -39,11 +43,11 @@ function videos()
 	require('view/videos.tpl');
 }
 
-/*
-this function is for the nascar page.
-the function asks to the controller loading articles, if there are articles in the category nascar in the database.
-the table ($table_articles) will be used in the view news_nascar.tpl
-*/
+/**
+ * this function is for the nascar page.
+ * the function asks to the controller loading articles, if there are articles in the category nascar in the database.
+ * the table ($table_articles) will be used in the view news_nascar.tpl
+ */
 function news_nascar()
 {
 	require('controller/loading_articles.php');
@@ -51,11 +55,11 @@ function news_nascar()
 	require('view/news_nascar.tpl');
 }
 
-/*
-this function is for the standing nascar page.
-the function asks to the controller loading results, if there are seasons in the category nascar in the database.
-the table ($table_seasons) will be used in the view standing_nascar.tpl
-*/
+/**
+ * this function is for the standing nascar page.
+ * the function asks to the controller loading results, if there are seasons in the category nascar in the database.
+ * the table ($table_seasons) will be used in the view standing_nascar.tpl
+ */
 function standing_nascar()
 {
 	require('controller/loading_results.php');
@@ -63,11 +67,11 @@ function standing_nascar()
 	require('view/standing_nascar.tpl');
 }
 
-/*
-this function is for the result nascar page.
-the function asks to the controller loading results, if there are seasons in the category nascar in the database.
-the table ($table_seasons) will be used in the view results_nascar.tpl
-*/
+/**
+ * this function is for the result nascar page.
+ * the function asks to the controller loading results, if there are seasons in the category nascar in the database.
+ * the table ($table_seasons) will be used in the view results_nascar.tpl
+ */
 function results_nascar()
 {
 	require('controller/loading_results.php');
@@ -75,11 +79,11 @@ function results_nascar()
 	require('view/results_nascar.tpl');
 }
 
-/*
-this function is for the F1 page.
-the function asks to the controller loading articles, if there are articles in the category F1 in the database.
-the table ($table_articles) will be used in the view news_f1.tpl
-*/
+/**
+ * this function is for the F1 page.
+ * the function asks to the controller loading articles, if there are articles in the category F1 in the database.
+ * the table ($table_articles) will be used in the view news_f1.tpl
+ */
 function news_f1()
 {
 	require('controller/loading_articles.php');
@@ -87,32 +91,32 @@ function news_f1()
 	require('view/news_f1.tpl');
 }
 
-/*
-this function is for the standing f1 page.
-the function asks to the controller loading results, if there are seasons in the category f1 in the database.
-the table ($table_seasons) will be used in the view standing_f1.tpl
-*/
+/**
+ * this function is for the standing f1 page.
+ * the function asks to the controller loading results, if there are seasons in the category f1 in the database.
+ * the table ($table_seasons) will be used in the view standing_f1.tpl
+ */
 function standing_f1()
 {
 	require('view/standing_f1.tpl');
 }
 
-/*
-this function is for the result f1 page.
-the function asks to the controller loading results, if there are seasons in the category f1 in the database.
-the table ($table_seasons) will be used in the view results_f1.tpl
-*/
+/**
+ * this function is for the result f1 page.
+ * the function asks to the controller loading results, if there are seasons in the category f1 in the database.
+ * the table ($table_seasons) will be used in the view results_f1.tpl
+ */
 function results_f1()
 {
 	require('view/results_f1.tpl');
 }
 
-/*
-this function is for the loading circuit. this function is called if the user has selected a season in a discipline of motorsport
-the function keeps the year of the season.
-The function asks to the controller leading results, if there are circuits where the discipline has to take part in the season
-the table ($table_circuits) will be used in the view results_race.tpl
-*/
+/**
+ * this function is for the loading circuit. this function is called if the user has selected a season in a discipline of motorsport
+ * the function keeps the year of the season.
+ * The function asks to the controller leading results, if there are circuits where the discipline has to take part in the season
+ * the table ($table_circuits) will be used in the view results_race.tpl
+ */
 function results_loading_circuits()
 {
 	require('controller/loading_results.php');
@@ -122,12 +126,12 @@ function results_loading_circuits()
 	require('view/results_race.tpl');
 }
 
-/*
-this function is for loading the result of a race. this function is called if the user has selected a circuit in a discipline of motorsport
-the function keeps the circuit selected.
-The function asks to the controller leading results, if there are reslts for the race
-the table ($table_results) wil be used in the view results_race.tpl
-*/
+/**
+ * this function is for loading the result of a race. this function is called if the user has selected a circuit in a discipline of motorsport
+ * the function keeps the circuit selected.
+ * The function asks to the controller leading results, if there are reslts for the race
+ * the table ($table_results) wil be used in the view results_race.tpl
+ */
 function results_loading_race()
 {
 	require('controller/loading_results.php');
@@ -136,12 +140,12 @@ function results_loading_race()
 	require('view/results_race.tpl');
 }
 
-/*
-this function is for loading the standings of a discipline in a season. this function is called if the user has selected the season
-the function keeps the year of the seasons
-the function ask to the controller loading results, the driver and team standing
-the tables ($table_standing_driver and $table_standing_team) will be used in the view standing.tpl
-*/
+/**
+ * this function is for loading the standings of a discipline in a season. this function is called if the user has selected the season
+ * the function keeps the year of the seasons
+ * the function ask to the controller loading results, the driver and team standing
+ * the tables ($table_standing_driver and $table_standing_team) will be used in the view standing.tpl
+ */
 function standing_loading()
 {
 	require('controller/loading_results.php');
@@ -151,10 +155,11 @@ function standing_loading()
 	require('view/standing.tpl');
 }
 
-/*
-this function is used to redirect to the article page.
-the function receives from the index.php the file's name of the article
-*/
+/**
+ * this function is used to redirect to the article page.
+ * the function receives from the index.php the file's name of the article
+ * @param String $name name of the article
+ */
 function article_page($name)
 {
 	if(!function_exists('get_articles'))
@@ -172,12 +177,13 @@ function article_page($name)
 	require('view/articles/'.$name.'.tpl');
 }
 
-/*
-this function is for loading information of a driver.
-the function receives from the index.php the ID of the driver
-the function asks to the controller loading results, the information of the driver, and all race that he/she takes part
-the tables ($driver_info and $driver_race) will be used in the view driver.tpl
-*/
+/**
+ * this function is for loading information of a driver.
+ * the function receives from the index.php the ID of the driver
+ * the function asks to the controller loading results, the information of the driver, and all race that he/she takes part
+ * the tables ($driver_info and $driver_race) will be used in the view driver.tpl
+ * @param Integer $driver id of the driver
+ */
 function driver_page($driver)
 {
 	require('controller/loading_results.php');
@@ -186,12 +192,13 @@ function driver_page($driver)
 	require('view/driver.tpl');
 }
 
-/*
-this function is for loading information of a team.
-the function receives from the index.php the ID of the team
-the function asks to the controller loading results, the drivers, all race that the drivers take part, and information of the team
-the tables ($team_info, $team_race and $list_driver) will be used in the view team.tpl
-*/
+/**
+ * this function is for loading information of a team.
+ * the function receives from the index.php the ID of the team
+ * the function asks to the controller loading results, the drivers, all race that the drivers take part, and information of the team
+ * the tables ($team_info, $team_race and $list_driver) will be used in the view team.tpl
+ * @param Integer $team id of the team
+ */
 function team_page($team)
 {
 	require('controller/loading_results.php');
@@ -201,16 +208,29 @@ function team_page($team)
 	require('view/team.tpl');
 }
 
+/**
+ * this function is for loading the page test
+ * this page is used only to test function before implementation on the website
+ */
 function test_crash()
 {
 	require('view/test_crash.tpl');
 }
 
+/**
+ * this function is for loading the contact page
+ * this page is used for users who want to ask a question
+ */
 function contact_page()
 {
 	require('view/contact.tpl');
 }
 
+/**
+ * this function is to test imput on the contact page
+ * @param String $data input from a field
+ * @return String $data input without special characters
+ */
 function test_input($data) {
 	$data = trim($data);
 	$data = stripslashes($data);
@@ -218,6 +238,12 @@ function test_input($data) {
 	return $data;
 }
 
+/**
+ * this function is to send a message
+ * the function will verify each field, if there is a blank field, therefore the function will require the contact page
+ * if the fields are not empty, therefore the function will redirect to the send message controller
+ * after all the treatments, the function will require the contact page with the message "message sent"
+ */
 function send_mail()
 {
 	if(empty($_POST['first_name']) || empty($_POST["last_name"]) || empty($_POST["mail"]) || empty($_POST["text"]))
@@ -247,7 +273,7 @@ function send_mail()
 			$text_error = "OK";
 		}
 
-		$message = "Message not sended";
+		$_SESSION['message']  = "Message not sended";
 		contact_page();
 	}
 	else
@@ -257,25 +283,31 @@ function send_mail()
 		$mail = test_input($_POST["mail"]);
 		$text = test_input($_POST["text"]);
 
-		require('controller/send_message.php');
+		require('model/send_message.php');
 		send_message_verified($first_name,$last_name,$mail,$text);
 
 		$first_name_error = $last_name_error = $mail_error = $text_error = "";
-		$message = "Message sended";
+		$_SESSION['message'] = "Message sended";
 		contact_page();
 	}
 }
 
+/**
+ * this function is to add a comment in a precise articles
+ * the function will verify each field, if there is a blank field, therefore the function will require the article page
+ * if the fields are not empty, therefore, the function will redirect to the loading article controller
+ * after all the process, the function will require the article page
+ */
 function addcomment()
 {
 	if ($_POST['name'] == "" || $_POST['commentaire'] == "")
 	{
-		$_SESSION['error_message'] = "missing entry";
+		$_SESSION['message'] = "missing entry";
 		article_page($_SESSION['article']);
 	}
 	else
 	{
-		$_SESSION['error_message'] = "";
+		$_SESSION['message'] = "comment added";
 
 		require('./controller/loading_articles.php');
 

@@ -1,6 +1,21 @@
 <?php
+
+/**
+ * This model is used for send message
+ * @author Laurent Yu
+ */
+
 require("G:\Laurent Yu Individual Project CI302\UwAmp\PHPMailer_5.2.0\class.phpmailer.php");
 require("G:\Laurent Yu Individual Project CI302\UwAmp\PHPMailer_5.2.0\class.smtp.php");
+
+/**
+ * this function is using sendmessage
+ * this function will try to send a message to a mail address
+ * @param String $first_name first name of the user
+ * @param String $last_name last name of the user
+ * @param String $mail email address of the user
+ * @param String $text message
+ */
 function send_message_verified($first_name,$last_name,$mail,$text)
 {
   $mail_to = 'laurentyu1997@gmail.com'; // Déclaration de l'adresse de destination.
@@ -12,6 +27,14 @@ function send_message_verified($first_name,$last_name,$mail,$text)
   echo(mail($mail_to, $subject, $text, $headers));
 }
 
+/**
+ * this function is using PHPmailer
+ * this function will try to send a message to a mail address
+ * @param String $first_name first name of the user
+ * @param String $last_name last name of the user
+ * @param String $mail email address of the user
+ * @param String $text message
+ */
 function send_message_phpmailer($first_name,$last_name,$mail,$text)
 {
 

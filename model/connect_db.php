@@ -1,12 +1,15 @@
 <?php
 
+/**
+ * This model is used to sign in to the database
+ * @author Laurent Yu
+ */
+
 //login and password for the database
 $host='localhost';
 $login='root';
 $pass='root';
 $db='nf1';
-
-
 
 if (! isset($link))
 {

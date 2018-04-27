@@ -1,7 +1,14 @@
 <?php
-/*
-this function will find out information of articles in a idCategory
-*/
+/**
+ * This model is used for articles
+ * @author Laurent Yu
+ */
+
+/**
+ * this function will find out articles in a idCategory
+ * @param Integer $number id of the disciplne
+ * @return List $articles list of articles in the discipline
+ */
 function get_articles_db($number)
 {
   require('./model/connect_db.php');
@@ -33,6 +40,12 @@ function get_articles_db($number)
   }
 }
 
+/**
+ * this function will find out the id of an article
+ * @param String $nameFile name of the file article
+ * @return Integer $idArticle['idArticle'] id of the article
+ */
+
 function get_id_article_db($nameFile)
 {
   require('./model/connect_db.php');
@@ -43,6 +56,12 @@ function get_id_article_db($nameFile)
   $idArticle = mysqli_fetch_assoc($result);
   return $idArticle['idArticle'];
 }
+
+/**
+ * this function will find out comments from an article
+ * @param Integer $idArticle id of the article
+ * @return List $comments list of comments for the article
+ */
 
 function get_comments_article_db($idArticle)
 {
@@ -61,6 +80,13 @@ function get_comments_article_db($idArticle)
   return $comments;
 }
 
+/**
+ * this function will put the comment into the database for the article
+ * @param String $name name of the user who wants to comment
+ * @param Integer $idArticle id of the article
+ * @param String $comment comment
+ */
+
 function add_comments_db($name,$idArticle,$comment)
 {
   require('./model/connect_db.php');
@@ -68,6 +94,12 @@ function add_comments_db($name,$idArticle,$comment)
   $request = sprintf($sql,$idArticle,$comment,$name);
   $result = mysqli_query($link,$request) or dir (utf8_encode("request error"));
 }
+
+/**
+ * this function will find out the file name of the article with the idArticle
+ * @param Integer $idArticle id of the article
+ * @return String $nameArticle['nameFile'] name of the article file 
+ */
 
 function get_article_name_db($idArticle)
 {

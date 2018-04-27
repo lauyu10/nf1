@@ -1,7 +1,14 @@
 <?php
-/*
-this function will find out all seasons in the discipline
-*/
+/**
+ * This model is used for results
+ * @author Laurent Yu
+ */
+
+/**
+ * this function will find out all seasons in the discipline
+ * @param Integer $idDiscipline id of the discipline
+ * @return List $season list of seasons in the discipline
+ */
 function get_seasons($idDiscipline)
 {
   require('./model/connect_db.php');
@@ -18,9 +25,11 @@ function get_seasons($idDiscipline)
 
 }
 
-/*
-this function will find out all circuits in the season
-*/
+/**
+ * this function will find out all circuits in the season
+ * @param Integer $idSeason id of a season
+ * @return List $circuit_season list of circuits which have a race in the season
+ */
 function get_circuits_season($idSeason)
 {
   require('./model/connect_db.php');
@@ -36,9 +45,11 @@ function get_circuits_season($idSeason)
   return $circuit_season;
 }
 
-/*
-this function will find out reults of the race
-*/
+/**
+ * this function will find out reults of the race
+ * @param Integer $idCircuit id of a circuit
+ * @return List $result_race list of drivers (result of the race)
+ */
 function get_race($idCircuit)
 {
   require('./model/connect_db.php');
@@ -46,17 +57,19 @@ function get_race($idCircuit)
   $request = sprintf($sql,$idCircuit);
   $result = mysqli_query($link,$request) or die (utf8_encode("request error") . $request);
 
-  $circuit_season= array();
+  $result_race= array();
   while ($line = mysqli_fetch_assoc($result) and isset($line))
   {
-    $circuit_season[] = $line;
+    $result_race[] = $line;
   }
-  return $circuit_season;
+  return $result_race;
 }
 
-/*
-this function will find out the year of a season
-*/
+/**
+ * this function will find out the year of a season
+ * @param Integer $idSeason id of the season
+ * @return Integer $year year of the season
+ */
 function get_year_db($idSeason)
 {
   require('./model/connect_db.php');
@@ -68,9 +81,11 @@ function get_year_db($idSeason)
   return $year;
 }
 
-/*
-this function will find out the place of the circuit
-*/
+/**
+ * this function will find out the place of the circuit
+ * @param Integer $idCircuit id of the circuit
+ * @return String $country name of the country
+ */
 function get_country_circuit_db($idCircuit)
 {
   require('./model/connect_db.php');
@@ -82,9 +97,11 @@ function get_country_circuit_db($idCircuit)
   return $country;
 }
 
-/*
-this function will find out the driver standing
-*/
+/**
+ * this function will find out the driver standing
+ * @param Integer $idSeason id of a season
+ * @return List $standing list of drivers (standing of drivers)
+ */
 function get_standing_driver_db($idSeason)
 {
   require('./model/connect_db.php');
@@ -99,9 +116,11 @@ function get_standing_driver_db($idSeason)
   return $standing;
 }
 
-/*
-this function will find out the team standing
-*/
+/**
+ * this function will find out the driver standing
+ * @param Integer $idSeason id of a season
+ * @return List $standing list of teams (standing of teams)
+ */
 function get_standing_team_db($idSeason)
 {
   require('./model/connect_db.php');
@@ -116,9 +135,11 @@ function get_standing_team_db($idSeason)
   return $standing;
 }
 
-/*
-this function will find out information of a driver
-*/
+/**
+ * this function will find out information of a driver
+ * @param Integer $idPilot id of the driver
+ * @return Object $driver_info information of the driver
+ */
 function get_driver_info_db($idPilot)
 {
   require('./model/connect_db.php');
@@ -129,9 +150,11 @@ function get_driver_info_db($idPilot)
   return $driver_info;
 }
 //date("y")
-/*
-this function will find out races of a driver
-*/
+/**
+ * this function will find out races of a driver
+ * @param Integer $idPilot id of the driver
+ * @return List $driver_race list of races for the driver
+ */
 function get_race_one_driver_db($idPilot)
 {
   require('./model/connect_db.php');
@@ -146,9 +169,11 @@ function get_race_one_driver_db($idPilot)
   return $driver_race;
 }
 
-/*
-this function will find out information of a team
-*/
+/**
+ * this function will find out information of a teams
+ * @param Integer $idTeam id of the team
+ * @return Object $team_info information of the team
+ */
 function get_team_info_db($idTeam)
 {
   require('./model/connect_db.php');
@@ -159,9 +184,11 @@ function get_team_info_db($idTeam)
   return $team_info;
 }
 
-/*
-this function will find out races of drivers in a team
-*/
+/**
+ * this function will find out races of a team
+ * @param Integer $idTeam id of the team
+ * @return List $race_team list of races for the team
+ */
 function get_race_team_db($idTeam)
 {
   require('./model/connect_db.php');
@@ -176,9 +203,11 @@ function get_race_team_db($idTeam)
   return $race_team;
 }
 
-/*
-this function will find out drivers of the team
-*/
+/**
+ * this function will find out drivers of the team
+ * @param Integer $idTeam id of the team
+ * @return List $list_driver list of drivers in the team
+ */
 function get_driver_team_db($idTeam)
 {
   require('./model/connect_db.php');

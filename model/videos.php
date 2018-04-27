@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * This model is used to get videos
+ * @author Laurent Yu
+ */
+
+/**
+ * this function will give information of videos
+ * @return List $videos list of videos
+ */
 function get_videos_db()
 {
   require('./model/connect_db.php');

@@ -144,9 +144,10 @@
 							<input id="no_border" type="text" name="name" placeholder="name ?"></input>
 							<textarea name="commentaire" placeholder="your comments here"></textarea>
 							<?php
-								if(isset($_SESSION['error_message']))
+								if(isset($_SESSION['message']))
 								{?>
-									<span id="error_message"><?php echo($_SESSION['error_message']);?></span><?php
+									<span id="error_message"><?php echo($_SESSION['message']);?></span><?php
+									$_SESSION['message'] = "";
 								}
 							?>
 							<button type="submit" class="btn btn-success green" id="marge"> Commenter</button>

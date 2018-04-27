@@ -108,7 +108,13 @@
 					<span id="error_message"><?php echo $first_name_error;?></span>
 			  </div>
 				<button type="submit" class="btn btn-primary">Send the text</button>
-				<h4 id="error_message"><?php echo $message; ?></h4>
+				<?php
+					if(isset($_SESSION['message']))
+					{?>
+						<span id="error_message"><?php echo($_SESSION['message']);?></span><?php
+						$_SESSION['message'] = "";
+					}
+				?>
 			</form>
 
 

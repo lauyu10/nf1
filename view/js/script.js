@@ -1,48 +1,53 @@
-/*
-$('p'); // je sélectionne tous les paragraphes
+/**
+ * This is the javascript for the website
+ * @author Laurent Yu
+ */
 
-$('.maClasse'); // je sélectionne les éléments ayant .maClasse pour classe
+/**
+ *
+ */
 
-$('#monId'); // je sélectionne l'élément qui possède l'identifiant #monId
+var standing;//keep information about the standing
+var year; //keep information about the year of the race or standing
+var race; //keep information about a race
 
-jQuery(document).ready(function(){}); = $(document).ready(function(){}); = $(function(){});
-
-*/
-
-/*
-function display_hello()
-{
-  alert("hello world");
-}
-*/
-//display_hello();
-
-var standing;
-var year;
-var race;
-
+/**
+ * @function
+ * @description EVENT ready - implements functions
+ */
 $(document).ready(function(){
-
   console.log("jQuery est prêt !");
 
-  $('a.text-white').hover(function(){
-    console.log("je suis sur un lien");
-  });
-
+  /**
+   * @function
+   * @description EVENT click - pop up the selection form for f1 standing
+   */
   $('#select').click(function(){
     $('#form_f1_selection').css({"display":"block"});
   });
 
+  /**
+   * @function
+   * @description EVENT click - pop up the selection form for f1
+   */
   $('#select_race').click(function(){
     $('#form_f1_selection').css({"display":"block"});
     $('#race').empty();
     $('#error_message').empty();
   });
 
+  /**
+   * @function
+   * @description EVENT click - close the form
+   */
   $('span.close').click(function(){
     $('#form_f1_selection').css({"display":"none"});
   });
 
+  /**
+   * @function
+   * @description EVENT click - get the selected year then call function to have the year
+   */
   $('#selected_year').click(function(){
     $('#form_f1_selection').css({"display":"none"});
     console.log($('#year').val());
@@ -50,6 +55,10 @@ $(document).ready(function(){
     function_load_standings_f1();
   });
 
+  /**
+   * @function
+   * @description EVENT change - get the selected year then call function races in this year
+   */
   $('#year_race').change(function(){
     if($('#year_race').val() == "")
     {
@@ -64,6 +73,10 @@ $(document).ready(function(){
     }
   });
 
+  /**
+   * @function
+   * @description EVENT click - get the other standing
+   */
   $('#standing_input').click(function(){
     console.log($('#standing_input')[0].checked);
     if($('#standing_input')[0].checked)
@@ -81,6 +94,10 @@ $(document).ready(function(){
     function_load_standings_f1();
   });
 
+  /**
+   * @function
+   * @description EVENT click - get the result of the race
+   */
   $('#selected_race').click(function(){
     if($('#race').val() == null)
     {
@@ -95,6 +112,11 @@ $(document).ready(function(){
     }
   });
 
+  /**
+   * @function
+   * @description EVENT click - if you click outside of the form. it will close the form
+   * @param e - the event
+   */
   var form_f1 = document.getElementById('form_f1_selection');
   $(window).on("click",function(e) {
       if(e.target == form_f1){
@@ -102,11 +124,19 @@ $(document).ready(function(){
       };
   });
 
+  /**
+   * @function
+   * @description EVENT click - get the result of the race
+   */
   $('#select_race_nascar').click(function(){
     $('#form_nascar_selection').css({"display":"block"});
     $('#race_nascar').empty();
   });
 
+  /**
+   * @function
+   * @description EVENT change - get races of the year of nascar
+   */
   $('#year_race_nascar').change(function(){
     console.log($('#year_race_nascar').val());
     if($('#year_race_nascar').val() == "")
@@ -122,6 +152,10 @@ $(document).ready(function(){
   });
 });
 
+/**
+ * @function function_load_standings_f1
+ * @description get f1 standing of the year driver or constructor from the API Ergast
+ */
 function function_load_standings_f1(){
   var adresse;
   if(standing == null || year == null)
@@ -227,6 +261,10 @@ function function_load_standings_f1(){
   });
 };
 
+/**
+ * @function function_load_race_f1
+ * @description get f1 race from the API Ergast
+ */
 function function_load_race_f1()
 {
   var adresse;
@@ -316,6 +354,10 @@ function function_load_race_f1()
   });
 };
 
+/**
+ * @function function_load_races_in_season_f1
+ * @description get f1 races in a season from the API Ergast
+ */
 function function_load_races_in_season_f1()
 {
   var adresse = "http://ergast.com/api/f1/"+ year +".json"
@@ -350,6 +392,10 @@ function function_load_races_in_season_f1()
   });
 }
 
+/**
+ * @function function_load_race_nascar
+ * @description get f1 races in a season from the API SportRadar
+ */
 function function_load_race_nascar()
 {
   var adresse = "http://api.sportradar.us/nascar-t3/mc/2017/races/schedule.json?api_key=7uerjqcasnrvsejva5ssmu2q";
@@ -370,6 +416,11 @@ function function_load_race_nascar()
   });
 }
 
+/**
+ * @function function_load_race_nascar
+ * @description get f1 races in a season from the API SportRadar
+ * @param event - the event
+ */
 function pop_up_window(event)
 {
   console.log(event.clientY);
@@ -430,9 +481,4 @@ function pop_up_window(event)
         },
     });
   }
-}
-
-function verify()
-{
-  console.log("coucou");
 }
