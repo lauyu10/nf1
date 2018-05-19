@@ -145,7 +145,7 @@
 									$_SESSION['message'] = "";
 								}
 							?>
-							<button type="submit" class="btn btn-success green" id="marge"> Commenter</button>
+							<button type="submit" class="btn btn-success green" id="marge"> Comment</button>
 						</form>
 					</div><!-- Status Upload  -->
 				</div><!-- Widget Area -->

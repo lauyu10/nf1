@@ -394,7 +394,7 @@ function function_load_races_in_season_f1()
 
 /**
  * @function function_load_race_nascar
- * @description get f1 races in a season from the API SportRadar
+ * @description get f1 races in a season from the API SportRadar not working
  */
 function function_load_race_nascar()
 {
@@ -417,8 +417,8 @@ function function_load_race_nascar()
 }
 
 /**
- * @function function_load_race_nascar
- * @description get f1 races in a season from the API SportRadar
+ * @function pop_up_window
+ * @description get information of a driver or a team targeted
  * @param event - the event
  */
 function pop_up_window(event)
