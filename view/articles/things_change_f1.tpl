@@ -79,7 +79,6 @@
 					The podium changes, with Bottas who is more accurate than Vettel (less DNF). He is 2nd and Vettel 3rd. At 4th and 5th, they are no changes, Raïkkönen and Ricciardo in this order. </br>
 					Then, we have the 2 drivers from Force India Pérez and Ocon who are behind Verstappen. </br>
 					With this system, we will have more battles in order to get some points very important in the driver standings but also in the constructor standings. </br>
-					<img src="./view/images/f1_nascar_points.png" alt="Differents scoring system. On the left, the fantasy scoring system. On the right, the real scoring system in f1."/>
 				</p>
 				<p class="article">
 					-	Races on public channels </br>
