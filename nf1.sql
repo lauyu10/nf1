@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 25 Mai 2018 à 19:03
+-- Généré le :  Ven 25 Mai 2018 à 19:11
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -626,6 +626,12 @@ ALTER TABLE `articles`
 ALTER TABLE `circuit`
   ADD CONSTRAINT `Fk_Circuit_Discipline` FOREIGN KEY (`idDiscipline`) REFERENCES `discipline` (`idDiscipline`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Fk_Circuit_Season` FOREIGN KEY (`idSeason`) REFERENCES `season` (`idSeason`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`idArticle`) REFERENCES `articles` (`idArticle`);
 
 --
 -- Contraintes pour la table `pilot`
