@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Dim 15 Avril 2018 à 13:23
+-- Généré le :  Ven 25 Mai 2018 à 19:03
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -153,6 +153,13 @@ CREATE TABLE `comments` (
   `name` varchar(255) NOT NULL,
   `date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `comments`
+--
+
+INSERT INTO `comments` (`idComment`, `idArticle`, `comment`, `name`, `date`) VALUES
+(1, 3, 'Nice article ', 'Laurent ', '2018-04-27 15:05:38');
 
 -- --------------------------------------------------------
 
@@ -582,7 +589,7 @@ ALTER TABLE `circuit`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `pilot`
 --
